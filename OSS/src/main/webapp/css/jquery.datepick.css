@@ -1,0 +1,230 @@
+/* Default styling for jQuery datepickerer v5.0.0. */
+.datepicker {
+	background-color: #fff;
+	color: #000;
+	
+	font-family: Arial,Helvetica,Sans-serif;
+	font-size:12px;width:250px !important
+}
+.datepicker-rtl {
+	direction: rtl;
+}
+.datepicker-popup {
+	z-index: 1000;	border: 1px solid #b3b3b3;width:250px
+}
+.datepicker-disable {
+	position: absolute;
+	z-index: 100;
+	background-color: white;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+.datepicker a {
+	color: #000;
+	text-decoration: none;
+}
+.datepicker a.datepicker-disabled {
+	color: #888;
+	cursor: auto;
+}
+.datepicker button {
+    margin: 0.25em;
+    padding: 0.125em 0em;
+    background-color: #fcc;
+    border: none;
+    border-radius: 0.25em;
+    -moz-border-radius: 0.25em;
+    -webkit-border-radius: 0.25em;
+    font-weight: bold;
+}
+.datepicker-nav, .datepicker-ctrl {
+	float: left;
+	width: 100%;
+	background-color: #FEF3E8;
+	color: #fff;
+	font-size:12px;
+	font-weight: bold;
+	border-bottom:1px solid #ddd;
+	padding:2px 0px
+}
+.datepicker-ctrl {
+	background-color: #ccc;
+}
+.datepicker-cmd {
+	width: 30%;
+}
+.datepicker-cmd:hover {
+	background-color: none !important;
+}
+.datepicker-ctrl .datepicker-cmd:hover {
+	background-color: none !important;
+}
+.datepicker-cmd-prevJump, .datepicker-cmd-nextJump {
+	width: 8%;
+}
+a.datepicker-cmd {
+	height: 1.5em;
+}
+button.datepicker-cmd {
+	text-align: center;
+}
+.datepicker-cmd-prev, .datepicker-cmd-prevJump, .datepicker-cmd-clear {
+	float: left;
+	padding-left: 2%;
+}
+.datepicker-cmd-current, .datepicker-cmd-today {
+	float: left;
+	width: 35%;
+	text-align: center;
+}
+.datepicker-cmd-next, .datepicker-cmd-nextJump, .datepicker-cmd-close {
+	float: right;
+	padding-right: 2%;
+	text-align: right;
+}
+.datepicker-rtl .datepicker-cmd-prev, .datepicker-rtl .datepicker-cmd-prevJump,
+.datepicker-rtl .datepicker-cmd-clear {
+	float: right;
+	padding-left: 0%;
+	padding-right: 2%;
+	text-align: right;
+}
+.datepicker-rtl .datepicker-cmd-current, .datepicker-rtl .datepicker-cmd-today {
+	float: right;
+}
+.datepicker-rtl .datepicker-cmd-next, .datepicker-rtl .datepicker-cmd-nextJump,
+.datepicker-rtl .datepicker-cmd-close {
+	float: left;
+	padding-left: 2%;
+	padding-right: 0%;
+	text-align: left;
+}
+.datepicker-month-nav {
+	float: left;
+	background-color: #777;
+	text-align: center;
+}
+.datepicker-month-nav div {
+	float: left;
+	width: 12.5%;
+	margin: 1%;
+	padding: 1%;
+}
+.datepicker-month-nav span {
+	color: #888;
+}
+.datepicker-month-row {
+	clear: left;
+}
+.datepicker-month {
+	float: left;
+	width: 250px;
+
+	text-align: center;
+}
+.datepicker-month-header, .datepicker-month-header select, .datepicker-month-header input {
+	height: 1.7em;
+	background-color: #fff;
+	color: #000;
+	font-weight: normal;
+	padding:2px 0px;
+	
+}
+.datepicker-month-header select, .datepicker-month-header input {
+	height: 1.4em;
+	margin: 0em;
+	padding: 0em;
+	border: none;
+	font-size:12px;border:1px solid #E1E1E1
+}
+.datepicker-month-header input {
+	position: absolute;
+	display: none;
+}
+.datepicker-month table {
+	width: 100%;
+	border-collapse: collapse;
+}
+.datepicker-month thead {
+	border-bottom: 1px solid #aaa;
+}
+.datepicker-month th, .datepicker-month td {
+	margin: 0em;
+	padding: 0em;
+	font-weight: normal;
+	text-align: center;
+}
+.datepicker-month th {
+	border: 1px solid #777;
+}
+.datepicker-month th, .datepicker-month th a {
+	background-color: #F3F3F3;
+	color: #000;
+}
+.datepicker-month td {
+	background-color: #fff;
+	border: 1px solid #aaa;
+}
+.datepicker-month td.datepicker-week {
+	border: 1px solid #777;
+}
+.datepicker-month td.datepicker-week * {
+	background-color: #777;
+	color: #fff;
+	border: none;
+}
+.datepicker-month a {
+	display: block;
+	width: 100%;
+	padding: 0.125em 0em;
+	background-color: #fff;
+	color: #000;
+	text-decoration: none;
+}
+.datepicker-month span {
+	display: block;
+	width: 100%;
+	padding: 0.125em 0em;
+}
+.datepicker-month td span {
+	color: #888;
+}
+.datepicker-month td .datepicker-other-month {
+	background-color: #fff;
+}
+.datepicker-month td .datepicker-weekend {
+	background-color: #FEF3E8;
+	color:#F47B29 !important
+}
+.datepicker-month td .datepicker-weekend:hover {
+	background-color: #FEF3E8;
+	color:#F47B29 !important
+}
+.datepicker-month td .datepicker-today {
+	background-color: #F47B29;color: #fff !important;
+}
+.datepicker-month td .datepicker-today:hover{
+	background-color: #F47B29;color: #fff !important;
+}
+.datepicker-month td .datepicker-highlight {
+text-decoration: underline;
+
+
+}
+.datepicker-month td .datepicker-selected {
+	background-color: #ccc;
+	color: #000 !important; font-weight:bold;
+	
+}
+.datepicker-month th.datepicker-week {
+	background-color: #777;
+	color: #fff;
+}
+.datepicker-status {
+	clear: both;
+	background-color: #ddd;
+	text-align: center;
+}
+.datepicker-clear-fix {
+	clear: both;
+}

@@ -1,0 +1,108 @@
+/* *********************************************************************************** Tab Look-a-Like */
+.ux-tab-look-alike {
+list-style:none;
+}
+.ux-tab-look-alike:after {
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: visible;
+	overflow:hidden;
+	border-top: 2px solid #b3b3b3;
+}
+.ux-tab-look-alike li {
+	float:left;
+	display: block;
+	margin-right: 5px;
+	margin-bottom: -3px;
+}
+.ux-tab-look-alike li a {
+	display: block;
+	font-weight: normal;
+	color: #000;
+	background-color: #f3f3f3;
+	padding: 8px 13px;
+	border: 1px solid #b3b3b3;
+	border-bottom: #b3b3b3 2px solid;
+}
+.ux-tab-look-alike li a.ux-tab-look-alike-selected {
+	background-color: #FFFFFF;
+	border-top: 2px solid #f47b29;
+	border-bottom: 2px solid #FFF;
+}
+
+/* *********************************************************************************** Table Caption */
+table.ux-tabl-data caption {
+text-align: left;
+padding: 13px;
+}
+
+/* *********************************************************************************** HTML Element Definitions */
+h4 {
+	color: #333333;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 120%;
+}
+
+
+/* *********************************************************************************** Panel Header w/Actions */
+.ux-panl-header-w-actions {
+
+}
+.ux-panl-header-w-actions h2,
+.ux-panl-header-w-actions h3 {
+	float: left;
+	height:auto;
+} 
+
+.ux-panl-header-w-actions li {
+	display: block;
+	float:left;
+	list-style:none;
+	line-height: 150%;
+	font-size:12px;
+	margin:0;
+	margin-left: 13px;
+}
+.ux-panl-header-w-actions ul.ux-btn-grouped {
+	float: right;
+}
+
+/* *********************************************************************************** Layout - Fixed Sidebar */
+.ux-layo-sidebar-fixed-width-16t-wrapper {
+	width: 100%;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.ux-layo-sidebar-fixed-width-16t-wrapper .ux-layo-sidebar-fixed-width-sidebar {
+	width: 208px; /*Width of left column*/
+	float: left;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.ux-layo-sidebar-fixed-width-16t-wrapper .ux-layo-sidebar-fixed-width-content {
+	margin-left: 234px; /* + 2t margin */
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+/* *********************************************************************************** Accordion Look-a-Like */
+.ux-accordion-look-alike {
+	margin: 0;
+}
+.ux-accordion-look-alike > h3 {
+	padding: 6px;
+	padding-left: 26px;
+	padding-bottom: 0;
+	margin: 0;
+}
+.ux-accordion-look-alike > div {
+
+}

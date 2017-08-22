@@ -1,0 +1,106 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 22, 2016, 8:01:55 PM
+    Author     : akeshavulu
+*/
+
+
+
+.ux-vnav {
+    padding-top:17px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin: 1px 0 0 0;
+}
+
+.ux-FormStyleLeftAlign dt {
+    width: 200px;
+}
+
+.ux-panl-content label {
+    float: right;
+    margin-bottom: 0.5em;
+}
+
+.ux-panl-content li {
+    float:none !important;
+}
+
+table.dataTable thead tr th{
+    color: #333333;
+    background:#ccc;
+    border-top: 1px solid #666666;
+    border-bottom: none;   
+}
+table.dataTable thead tr td{
+    color: #333333;
+    border-bottom: 1px solid #666666;
+    background:#ccc;
+    border-top: none;
+    border-bottom: 4px solid #666666;
+    padding:0px;
+    padding-bottom:5px;
+    padding-left:15px;
+}
+.ux-tabl-data td, .ux-tabl-data th {
+    vertical-align: middle;
+}
+.ux-tabl-data-alt {
+    margin: 0px 0;
+}
+table.dataTable{
+    margin:0 auto;
+}
+table.dataTable thead .sorting{
+    background-position: 70% center !important;
+}
+table.dataTable thead .sorting_desc{
+    background-position: 70% center !important;
+}
+table.dataTable thead .sorting_asc{
+    background-position: 70% center !important;
+}
+.dataTables_scrollHeadInner{
+    width:100% !important;
+}
+.dataTable{
+    width:100% !important;
+}
+
+table.dataTable tbody{
+    height: 100px !important;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+}
+.dataTables_scrollBody{
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+}
+table.dataTable thead .sorting {
+  background:#ccc url("../images/sort_spinner_gray6.png") no-repeat center right; 
+  cursor:pointer;outline:0
+}
+table.dataTable thead .sorting_asc {
+  background:#ccc url("../images/up_arrow.png") no-repeat center right;
+  cursor:pointer;
+  outline:0
+}
+table.dataTable thead .sorting_desc {
+  background:#ccc url("../images/down_arrow.png") no-repeat center right;
+cursor:pointer;outline:0
+}
+table.dataTable thead .sorting_asc_disabled {
+  background-image: url("../images/sort_asc_disabled.png");
+}
+table.dataTable thead .sorting_desc_disabled {
+  background-image: url("../images/sort_desc_disabled.png");
+}
+/*.dataTables_scrollBody{
+    overflow-y:auto !important;
+    overflow-x:auto !important;
+}*/

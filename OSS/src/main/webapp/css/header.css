@@ -1,0 +1,39 @@
+/**
+ *** DO NOT MODIFY THE COPYRIGHT HEADER MANUALLY ***
+ * Copyright (c) Optum 2015 - All Rights Reserved.
+ *** Release process will update accordingly ***
+ * @version 3.8.0
+ */
+/*Primary Navigation */
+.tk-head {
+	border: .083rem solid #b3b3b3;
+	box-shadow: 0 .250rem .250rem 0 rgba(179, 179, 179, 0.75);
+	text-align: right;
+	height: 5.417rem;
+	z-index:10;
+	position:relative;
+
+}
+	
+.tk-head-logo{
+	float:left;
+	line-height:5.417rem;
+	margin: 0 0 0 1.083rem;		
+}	
+
+.tk-head-logo img{
+	vertical-align:middle;
+}					
+
+
+
+/* For tablets */
+@media only screen and (max-width: 992px) {
+	.tk-head {
+		height: 5.5rem;
+	}
+	
+	.tk-head-logo{
+	line-height:5.5rem
+	}
+}

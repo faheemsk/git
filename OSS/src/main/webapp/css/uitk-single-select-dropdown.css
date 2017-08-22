@@ -1,0 +1,19 @@
+/**
+ *** DO NOT MODIFY THE COPYRIGHT HEADER MANUALLY ***
+ * Copyright (c) Optum 2015 - All Rights Reserved.
+ *** Release process will update accordingly ***
+ * @version 3.8.0
+ */
+@charset "utf-8";
+
+.tk-sngl-dpwn select { 
+	height: 1.583rem;
+}
+
+@media only screen and (max-width: 992px) {
+	.tk-sngl-dpwn {
+		height: 3.667rem;
+		font-size:16px;
+	}
+}
+

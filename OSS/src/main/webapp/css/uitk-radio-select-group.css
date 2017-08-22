@@ -1,0 +1,49 @@
+/**
+ *** DO NOT MODIFY THE COPYRIGHT HEADER MANUALLY ***
+ * Copyright (c) Optum 2015 - All Rights Reserved.
+ *** Release process will update accordingly ***
+ * @version 3.8.0
+ */
+@charset "utf-8";
+/*Label style*/
+.tk-form-radio {
+	line-height: 150%;
+	vertical-align: middle;
+}
+.tk-form-radio li label > section{
+	padding: 10px 0px 15px 20px;
+}
+.tk-form-radio .groupItem > div{
+	margin-top: 5px;
+}
+
+	.tk-form-radio label{
+		font-weight:normal;
+	}
+
+
+		.tk-form-radio input[type="radio"]:focus {
+    		outline: thin dotted;
+		}
+
+			.tk-form-radio input[type="radio"]:active {
+       			background: none;
+			}
+
+.tk-form-radio .tk-inline-label {
+    font-weight: bold;
+}
+
+.uitk-radio-content {
+	display: block;
+	margin-left: 20px;
+	margin-top: 10px;
+}
+
+@media only screen and (max-width: 992px) {
+
+	.tk-form-radio {
+		margin-top: -0.5rem;
+	}
+
+}
