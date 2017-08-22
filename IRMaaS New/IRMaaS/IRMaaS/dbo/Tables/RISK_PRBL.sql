@@ -1,0 +1,12 @@
+﻿CREATE TABLE [dbo].[RISK_PRBL] (
+    [RISK_PRBL_CD]        VARCHAR (3)     NOT NULL,
+    [RISK_PRBL_NM]        VARCHAR (150)   NOT NULL,
+    [RISK_PRBL_ORDR_NBR]  INT             NOT NULL,
+    [CVSS_EXPLT_SCOR_MIN] DECIMAL (10, 2) NULL,
+    [CVSS_EXPLT_SCOR_MAX] DECIMAL (10, 2) NULL,
+    [CREAT_DT]            DATETIME        NOT NULL,
+    [CREAT_USER_ID]       INT             NOT NULL,
+    [UPDT_DT]             DATETIME        NULL,
+    [UPDT_USER_ID]        INT             NULL,
+    CONSTRAINT [PK_RISK_PRBL] PRIMARY KEY CLUSTERED ([RISK_PRBL_CD] ASC)
+);

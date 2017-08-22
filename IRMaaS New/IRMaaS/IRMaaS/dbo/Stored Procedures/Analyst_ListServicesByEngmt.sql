@@ -1,0 +1,42 @@
+﻿
+CREATE PROCEDURE [dbo].[Analyst_ListServicesByEngmt]
+(
+	@ENGMT_CD VARCHAR(30)
+)
+AS
+BEGIN
+
+
+BEGIN TRY
+SET NOCOUNT ON
+
+			SELECT  B.SECUR_SRVC_CD,SECUR_SRVC_NM,D.LKP_ENTY_NM ReviewStatus,
+					A.CREAT_USER_ID,ISNULL(C.FST_NM+' '+C.LST_NM,'') UserName,A.UPDT_DT
+			FROM	CLNT_SECUR_SRVC_ENGMT		A
+			JOIN	SECUR_SRVC					B
+			ON		A.SECUR_SRVC_CD			=   B.SECUR_SRVC_CD
+			JOIN	USER_PRFL					C
+			ON		A.CREAT_USER_ID			=   C.USER_ID
+			JOIN	MSTR_LKP					D
+			ON		A.SRVC_ENGMT_STS_KEY	=	D.MSTR_LKP_KEY
+			WHERE	A.CLNT_ENGMT_CD			=	@ENGMT_CD
+			AND		A.ROW_STS_KEY			=   1
+END TRY
+
+BEGIN CATCH
+
+    DECLARE @ErrorNumber INT = ERROR_NUMBER();
+    DECLARE @ErrorLine INT = ERROR_LINE();
+    DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+    DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+    DECLARE @ErrorState INT = ERROR_STATE();
+
+    PRINT 'Actual error number: ' + CAST(@ErrorNumber AS VARCHAR(10));
+    PRINT 'Actual line number: ' + CAST(@ErrorLine AS VARCHAR(10));
+
+    RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
+  END CATCH
+-- COMMIT TRANSACTION
+END
+
+

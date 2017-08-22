@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[RMDTN_CST_EFFRT] (
+    [RMDTN_CST_EFFRT_CD]       VARCHAR (3)   NOT NULL,
+    [RMDTN_CST_EFFRT_NM]       VARCHAR (150) NOT NULL,
+    [RMDTN_CST_EFFRT_ORDR_NBR] INT           NULL,
+    [CREAT_DT]                 DATETIME      NOT NULL,
+    [CREAT_USER_ID]            INT           NOT NULL,
+    [UPDT_DT]                  DATETIME      NULL,
+    [UPDT_USER_ID]             INT           NULL,
+    CONSTRAINT [PK_RMDTN_CST_EFFRT] PRIMARY KEY CLUSTERED ([RMDTN_CST_EFFRT_CD] ASC)
+);

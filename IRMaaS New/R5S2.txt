@@ -1,0 +1,119 @@
+
+GO
+CREATE PROCEDURE [dbo].[RMTDN_GetFindingListSearchCriteria]
+(
+	@CLNT_ENGMT_CD			VARCHAR(50),
+	@SchemaName				VARCHAR(50),
+	@VULN_SEV_CD			VARCHAR(500),
+	@VULN_SRC_KEY			VARCHAR(500),
+	@SECUR_SRVC_CD			VARCHAR(500),
+	@OS_CATGY				VARCHAR(500),
+	@VULN_CATGY_CD			VARCHAR(500)
+
+	
+
+)
+AS
+BEGIN
+
+
+BEGIN TRY
+SET NOCOUNT ON
+	DECLARE @Query VARCHAR(max)
+
+
+
+	SET		@Query = 'A.CLNT_ENGMT_CD,A.CLNT_VULN_INSTC_KEY,A.VULN_NM,A.CVE_ID,A.IPADR,A.APPL_URL
+			FROM	  '+ @SchemaName+ '.CLNT_VULN_INSTC							  A
+			LEFT JOIN dbo.FnSplit('''+@VULN_SEV_CD +''','','')	  E
+			ON		  A.VULN_SEV_CD								= E.items
+			WHERE	  A.CLNT_ENGMT_CD							= '''+@CLNT_ENGMT_CD +'''
+			AND		  A.VULN_INSTC_STS_CD						NOT IN(''D'',''FP'')
+			AND		  A.VULN_SEV_CD								NOT IN(''I'')
+			AND		  A.ROW_STS_KEY								= 1
+
+			UNION
+
+			SELECT	  A.CLNT_ENGMT_CD,A.CLNT_VULN_INSTC_KEY,A.VULN_NM,A.CVE_ID,A.IPADR,A.APPL_URL
+			FROM	  '+ @SchemaName+ '.CLNT_VULN_INSTC			  A
+			JOIN	  dbo.FnSplit('''+@VULN_SRC_KEY +''','','')		  E
+			ON		  A.VULN_SRC_KEY							= E.items
+			WHERE	  A.CLNT_ENGMT_CD							= '''+@CLNT_ENGMT_CD +'''
+			AND		  A.VULN_INSTC_STS_CD						NOT IN(''D'',''FP'')
+			AND		  A.VULN_SEV_CD								NOT IN(''I'')
+			AND		  A.ROW_STS_KEY								= 1
+
+			UNION
+
+			SELECT	  A.CLNT_ENGMT_CD,A.CLNT_VULN_INSTC_KEY,A.VULN_NM,A.CVE_ID,A.IPADR,A.APPL_URL
+			FROM	  '+ @SchemaName+ '.CLNT_VULN_INSTC			  A
+			JOIN	  dbo.FnSplit('''+@SECUR_SRVC_CD +''','','')  E
+			ON		  A.SECUR_SRVC_CD							= E.items
+			WHERE	  A.CLNT_ENGMT_CD							= '''+@CLNT_ENGMT_CD +'''
+			AND		  A.VULN_INSTC_STS_CD						NOT IN(''D'',''FP'')
+			AND		  A.VULN_SEV_CD								NOT IN(''I'')
+			AND		  A.ROW_STS_KEY								= 1
+
+			UNION
+
+			SELECT	  A.CLNT_ENGMT_CD,A.CLNT_VULN_INSTC_KEY,A.VULN_NM,A.CVE_ID,A.IPADR,A.APPL_URL
+			FROM	  '+ @SchemaName+ '.CLNT_VULN_INSTC			  A
+			JOIN	  OS										  B
+			ON		  A.OS_KEY								    = B.OS_KEY
+			JOIN	  OS_CATGY									  C
+			ON		  B.OS_CATGY_KEY							= C.OS_CATGY_KEY
+			JOIN	  dbo.FnSplit('''+@OS_CATGY +''','','')		  E
+			ON		  C.OS_CATGY_KEY							= E.items
+			WHERE	  A.CLNT_ENGMT_CD							= '''+@CLNT_ENGMT_CD +'''
+			AND		  A.VULN_INSTC_STS_CD						NOT IN(''D'',''FP'')
+			AND		  A.VULN_SEV_CD								NOT IN(''I'')
+			AND		  A.ROW_STS_KEY								= 1
+
+			UNION
+
+			SELECT	  A.CLNT_ENGMT_CD,A.CLNT_VULN_INSTC_KEY,A.VULN_NM,A.CVE_ID,A.IPADR,A.APPL_URL
+			FROM	  '+ @SchemaName+ '.CLNT_VULN_INSTC			  A
+			JOIN	  OS										  B
+			ON		  A.OS_KEY								    = B.OS_KEY
+			JOIN	  OS_CATGY									  C
+			ON		  B.OS_CATGY_KEY							= C.OS_CATGY_KEY
+			JOIN	  dbo.FnSplit('''+@OS_CATGY +''','','')		  E
+			ON		  C.OS_CATGY_KEY							= E.items
+			WHERE	  A.CLNT_ENGMT_CD							= '''+@CLNT_ENGMT_CD +'''
+			AND		  A.VULN_INSTC_STS_CD						NOT IN(''D'',''FP'')
+			AND		  A.VULN_SEV_CD								NOT IN(''I'')
+			AND		  A.ROW_STS_KEY								= 1
+
+			UNION
+
+			SELECT	  A.CLNT_ENGMT_CD,A.CLNT_VULN_INSTC_KEY,A.VULN_NM,A.CVE_ID,A.IPADR,A.APPL_URL 
+			FROM	  '+ @SchemaName+ '.CLNT_VULN_INSTC			  A
+			JOIN	  dbo.FnSplit('''+@VULN_CATGY_CD +''','','')  E
+			ON		  A.VULN_CATGY_CD							= E.items
+			WHERE	  A.CLNT_ENGMT_CD							= '''+@CLNT_ENGMT_CD +'''
+			AND		  A.VULN_INSTC_STS_CD						NOT IN(''D'',''FP'')
+			AND		  A.VULN_SEV_CD								NOT IN(''I'')
+			AND		  A.ROW_STS_KEY								= 1
+			 '
+--	PRINT    @Query
+	EXECUTE (@Query)
+
+
+
+END TRY
+
+BEGIN CATCH
+
+    DECLARE @ErrorNumber INT = ERROR_NUMBER();
+    DECLARE @ErrorLine INT = ERROR_LINE();
+    DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+    DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+    DECLARE @ErrorState INT = ERROR_STATE();
+
+    PRINT 'Actual error number: ' + CAST(@ErrorNumber AS VARCHAR(10));
+    PRINT 'Actual line number: ' + CAST(@ErrorLine AS VARCHAR(10));
+
+    RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
+  END CATCH
+-- COMMIT TRANSACTION
+END

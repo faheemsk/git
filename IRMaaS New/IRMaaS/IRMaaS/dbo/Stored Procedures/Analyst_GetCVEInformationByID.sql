@@ -1,0 +1,36 @@
+﻿CREATE PROCEDURE [dbo].[Analyst_GetCVEInformationByID]
+(
+	
+	@CVE_ID		 VARCHAR(25)
+	
+)
+AS
+BEGIN
+
+
+BEGIN TRY
+SET NOCOUNT ON
+		
+		SELECT CVE_ID,CVE_DESC,CWE_ID,UPDT_DT,BAS_SCOR,ACS_VCTR,ACS_CMPLX,CONFDTY_IMP,INGTY_IMP,AVL_IMP,VCTR_TXT,IMP_SUB_SCOR,EXPLT_SUB_SCOR
+	    FROM CVE
+		WHERE CVE_ID = @CVE_ID
+			       
+
+
+END TRY
+
+BEGIN CATCH
+
+    DECLARE @ErrorNumber INT = ERROR_NUMBER();
+    DECLARE @ErrorLine INT = ERROR_LINE();
+    DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+    DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+    DECLARE @ErrorState INT = ERROR_STATE();
+
+    PRINT 'Actual error number: ' + CAST(@ErrorNumber AS VARCHAR(10));
+    PRINT 'Actual line number: ' + CAST(@ErrorLine AS VARCHAR(10));
+
+    RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
+  END CATCH
+-- COMMIT TRANSACTION
+END

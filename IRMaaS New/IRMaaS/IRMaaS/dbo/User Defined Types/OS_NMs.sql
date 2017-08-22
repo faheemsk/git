@@ -1,0 +1,4 @@
+﻿CREATE TYPE [dbo].[OS_NMs] AS TABLE (
+    [OS_NM] NVARCHAR (150) NULL);
+
+	

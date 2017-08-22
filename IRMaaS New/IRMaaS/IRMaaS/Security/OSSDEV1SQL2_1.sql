@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [OSSDEV1SQL2]
+    WITH PASSWORD = N'2xfdmi|pgz7czGRg zdrh|itmsFT7_&#$!~<lg9mjqgqnwaw', SID = 0xC2F065F063649E4B90FCE4EF71AA6922, DEFAULT_LANGUAGE = [us_english];
+

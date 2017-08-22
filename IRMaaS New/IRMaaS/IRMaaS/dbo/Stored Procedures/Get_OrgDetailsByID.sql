@@ -1,0 +1,41 @@
+﻿CREATE PROCEDURE [dbo].[Get_OrgDetailsByID]  
+(  
+ @OrgID INTEGER  
+)  
+AS  
+BEGIN  
+ DECLARE @LiCOUNT INTEGER = 0;
+BEGIN TRY  
+SET NOCOUNT ON  
+ 
+SELECT @LiCOUNT= COUNT(USER_ID)  FROM USER_PRFL WHERE ORG_KEY = @OrgID GROUP BY ORG_KEY
+
+SELECT  A.ORG_KEY,A.ROW_STS_KEY,[dbo].[fnGetMasterLkpNameByID](A.ROW_STS_KEY) OrgStatus,  
+		ISNULL(A.PAR_ORG_KEY,0) PAR_ORG_KEY,A.ORG_TYP_KEY,[dbo].[fnGetMasterLkpNameByID](A.ORG_TYP_KEY) [Org Type Name],B.LKP_ENTY_NM,A.ORG_INDUS_KEY,[dbo].[fnGetMasterLkpNameByID](A.ORG_INDUS_KEY) OrgIndustry,A.ORG_NM,A.STR_ADR_1,A.STR_ADR_2,A.CTY_NM,A.ST_NM,CNTRY_NM,  
+		A.PST_CD,A.ORG_DESC,A.STS_COMMT_TXT ,ISNULL([dbo].[fnGetParentOrgNameID](A.PAR_ORG_KEY),'') PAR_ORG_NM,@LiCOUNT UserCount ,A.CREAT_ORG_SCHM_IND,A.ORG_SCHM
+FROM    ORG      A  
+JOIN	MSTR_LKP    B  
+ON		A.ORG_TYP_KEY = B.MSTR_LKP_KEY  
+WHERE   A.ORG_KEY   = CASE WHEN @OrgID = 0 THEN A.ORG_KEY ELSE @OrgID END 
+AND		A.ORG_KEY <>1 
+ORDER BY CASE WHEN ISNULL(A.UPDT_DT,'')='' THEN A.CREAT_DT ELSE A.UPDT_DT END DESC  
+  
+  
+END TRY  
+  
+BEGIN CATCH  
+  
+    DECLARE @ErrorNumber INT = ERROR_NUMBER();  
+    DECLARE @ErrorLine INT = ERROR_LINE();  
+    DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();  
+    DECLARE @ErrorSeverity INT = ERROR_SEVERITY();  
+    DECLARE @ErrorState INT = ERROR_STATE();  
+  
+    PRINT 'Actual error number: ' + CAST(@ErrorNumber AS VARCHAR(10));  
+    PRINT 'Actual line number: ' + CAST(@ErrorLine AS VARCHAR(10));  
+  
+    RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);  
+  END CATCH  
+-- COMMIT TRANSACTION  
+END
+

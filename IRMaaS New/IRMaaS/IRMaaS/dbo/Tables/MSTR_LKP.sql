@@ -1,0 +1,12 @@
+﻿CREATE TABLE [dbo].[MSTR_LKP] (
+    [MSTR_LKP_KEY]    INT            IDENTITY (1, 1) NOT NULL,
+    [LKP_ENTY_TYP_NM] VARCHAR (500)  NOT NULL,
+    [LKP_ENTY_NM]     VARCHAR (500)  NOT NULL,
+    [LKP_ENTY_DESC]   VARCHAR (1000) NULL,
+    [ACTV_IND]        INT            DEFAULT ((1)) NOT NULL,
+    [CREAT_DT]        DATETIME       NOT NULL,
+    [CREAT_USER_ID]   INT            NOT NULL,
+    [UPDT_DT]         DATETIME       NULL,
+    [UPDT_USER_ID]    INT            NULL,
+    CONSTRAINT [PK_MSTR_LKP] PRIMARY KEY CLUSTERED ([MSTR_LKP_KEY] ASC)
+);

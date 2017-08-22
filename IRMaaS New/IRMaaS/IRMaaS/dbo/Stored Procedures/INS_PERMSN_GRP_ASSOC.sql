@@ -1,0 +1,60 @@
+﻿CREATE PROCEDURE [dbo].[INS_PERMSN_GRP_ASSOC](
+	
+	@PERMSN_GRP_KEY       INTEGER,
+	@ROW_STS_KEY          INTEGER,
+	@PERMSN_KEY           INTEGER,
+	@MDUL_ID              INTEGER,
+	@MNU_ID               INTEGER,
+	@SUB_MNU_ID           INTEGER,
+	@CREAT_USER_ID        INTEGER,  
+	@FLAG				  CHAR(1)
+	)
+	AS
+	BEGIN
+		BEGIN TRY
+
+		SET NOCOUNT ON
+
+			 IF @FLAG = 'I'
+            BEGIN
+
+		
+			INSERT PERMSN_GRP_ASSOC(PERMSN_GRP_KEY,ROW_STS_KEY,PERMSN_KEY,MDUL_ID,MNU_ID,SUB_MNU_ID,CREAT_DT,CREAT_USER_ID) VALUES
+			(@PERMSN_GRP_KEY,@ROW_STS_KEY,@PERMSN_KEY,@MDUL_ID,@MNU_ID,@SUB_MNU_ID,GETDATE(),@CREAT_USER_ID)
+
+			SELECT SCOPE_IDENTITY() AS RETVAL
+			END
+			
+			
+			IF @FLAG = 'D'
+            
+            BEGIN 
+			
+			DELETE FROM PERMSN_GRP_ASSOC WHERE PERMSN_GRP_KEY = @PERMSN_GRP_KEY
+            SELECT @@ROWCOUNT AS RETVAL     
+            END
+			
+		END TRY
+
+		BEGIN CATCH
+			
+			DECLARE @ErrorNumber INT = ERROR_NUMBER();
+			DECLARE @ErrorLine INT = ERROR_LINE();
+			DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+			DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+			DECLARE @ErrorState INT = ERROR_STATE();
+
+			PRINT 'Actual error number: ' + CAST(@ErrorNumber AS VARCHAR(10));
+			PRINT 'Actual line number: ' + CAST(@ErrorLine AS VARCHAR(10));
+
+			RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
+		  END CATCH
+		
+	END;
+
+
+
+
+
+
+

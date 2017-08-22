@@ -1,0 +1,16 @@
+﻿CREATE FUNCTION [dbo].[fnGetUserEmailByID]
+(	
+    @Userid	INTEGER
+)
+RETURNS NVARCHAR(MAX)
+AS
+BEGIN
+    DECLARE @EmailID NVARCHAR(500)
+   
+      SELECT @EmailID = EMAIL_ID  FROM USER_PRFL
+      WHERE	 USER_ID = @Userid
+
+    RETURN @EmailID
+END
+
+

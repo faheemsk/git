@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [HEALTHITPLUS\Administrator]
+    FROM WINDOWS WITH DEFAULT_LANGUAGE = [us_english];
+

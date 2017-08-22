@@ -1,0 +1,36 @@
+﻿
+CREATE PROCEDURE [dbo].[Analyst_ListCntrlByFamilyID]
+(
+	@SECUR_CTL_FAM_CD	VARCHAR(50)
+)
+
+AS
+BEGIN
+
+
+BEGIN TRY
+SET NOCOUNT ON
+
+			SELECT   SECUR_OBJ_NM,SECUR_CTL_NM,SECUR_CTL_DESC
+			FROM	 SECUR_CTL			
+			WHERE	 SECUR_CTL_FAM_CD	= @SECUR_CTL_FAM_CD
+END TRY
+
+BEGIN CATCH
+
+    DECLARE @ErrorNumber INT = ERROR_NUMBER();
+    DECLARE @ErrorLine INT = ERROR_LINE();
+    DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+    DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+    DECLARE @ErrorState INT = ERROR_STATE();
+
+    PRINT 'Actual error number: ' + CAST(@ErrorNumber AS VARCHAR(10));
+    PRINT 'Actual line number: ' + CAST(@ErrorLine AS VARCHAR(10));
+
+    RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
+  END CATCH
+-- COMMIT TRANSACTION
+END
+
+
+

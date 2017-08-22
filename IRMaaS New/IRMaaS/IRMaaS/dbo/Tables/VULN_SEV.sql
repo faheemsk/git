@@ -1,0 +1,12 @@
+﻿CREATE TABLE [dbo].[VULN_SEV] (
+    [VULN_SEV_CD]       VARCHAR (3)     NOT NULL,
+    [VULN_SEV_NM]       VARCHAR (150)   NOT NULL,
+    [VULN_SEV_ORDR_NBR] INT             NULL,
+    [OVALL_SCOR_MIN]    DECIMAL (10, 2) NULL,
+    [OVALL_SCOR_MAX]    DECIMAL (10, 2) NULL,
+    [CREAT_DT]          DATETIME        NOT NULL,
+    [CREAT_USER_ID]     INT             NOT NULL,
+    [UPDT_DT]           DATETIME        NULL,
+    [UPDT_USER_ID]      INT             NULL,
+    CONSTRAINT [PK_VULN_SEV] PRIMARY KEY CLUSTERED ([VULN_SEV_CD] ASC)
+);

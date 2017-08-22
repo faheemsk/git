@@ -1,0 +1,11 @@
+Common Format ETL Steps
+
+1.Run IRMAaaS-STG Package
+2.Load CMN_FMT_VI_STG
+3.Change Project params as required.
+4.Data will be inserted into SchemaName.CMN_FMT_V1_STG table.
+5.Open IRMaaS_Master Package for Moving Data from SchemaName.CMN_FMT_V1_STG to SchemaName.CLNT_VULN_INSTC
+6.Run CMN_FMT_V1_MASTER Package.Data will be loaded to SchemaName.CLNT_VULN_INSTC.
+7.Run CLNT_VULN_SECUR_CTL Package fro Loading CLNT_VULN_SECUR_CTL data.
+(Before loading check CVE_SECUR_CTL_MAP table row status.Row status shoulb be 1)
+8.Run Common format update statement to update Severity Code,Impact code and Risk Prob Code.

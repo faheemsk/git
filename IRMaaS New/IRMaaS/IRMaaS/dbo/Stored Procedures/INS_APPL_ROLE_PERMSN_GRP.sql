@@ -1,0 +1,61 @@
+﻿CREATE PROCEDURE [dbo].[INS_APPL_ROLE_PERMSN_GRP](
+	
+	@APPL_ROLE_KEY				INTEGER,
+	@PERMSN_GRP_KEY				INTEGER,
+	@ROW_STS_KEY				INTEGER,
+	@CREAT_USER_ID				INTEGER,
+	@FLAG						CHAR(1)
+	
+
+	)
+	AS
+	BEGIN
+	BEGIN TRY
+	SET NOCOUNT ON
+		    
+		    IF @FLAG = 'I'
+            BEGIN
+
+			INSERT APPL_ROLE_PERMSN_GRP(APPL_ROLE_KEY,PERMSN_GRP_KEY,ROW_STS_KEY,CREAT_USER_ID,CREAT_DT) VALUES
+			(@APPL_ROLE_KEY,@PERMSN_GRP_KEY,@ROW_STS_KEY,@CREAT_USER_ID,GETDATE())
+			
+			SELECT SCOPE_IDENTITY() AS RETVAL
+			
+			END
+            
+            IF @FLAG = 'D'
+            
+            BEGIN 
+			
+			DELETE FROM APPL_ROLE_PERMSN_GRP WHERE APPL_ROLE_KEY = @APPL_ROLE_KEY
+			
+			SELECT @@ROWCOUNT RETVAL
+                  
+            END
+
+		END TRY
+
+		BEGIN CATCH
+			
+
+			DECLARE @ErrorNumber INT = ERROR_NUMBER();
+			DECLARE @ErrorLine INT = ERROR_LINE();
+			DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+			DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+			DECLARE @ErrorState INT = ERROR_STATE();
+
+			PRINT 'Actual error number: ' + CAST(@ErrorNumber AS VARCHAR(10));
+			PRINT 'Actual line number: ' + CAST(@ErrorLine AS VARCHAR(10));
+
+			RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
+
+		  END CATCH
+		
+	END
+
+
+
+
+
+
+

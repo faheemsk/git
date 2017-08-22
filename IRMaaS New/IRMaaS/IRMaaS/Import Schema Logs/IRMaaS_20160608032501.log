@@ -1,0 +1,77 @@
+6/7/2016 10:25:01 PM	This log contains information about the import schema operation into project 'IRMaaS' on computer 'LH7U05CG6072WC9' by user 'gmuthala'.
+6/7/2016 10:25:02 PM	Import of database schema has started.
+6/7/2016 10:25:29 PM	Gathering database options
+6/7/2016 10:25:29 PM	Gathering users
+6/7/2016 10:25:29 PM	Gathering roles
+6/7/2016 10:25:29 PM	Gathering application roles
+6/7/2016 10:25:29 PM	Gathering role memberships
+6/7/2016 10:25:29 PM	Gathering filegroups
+6/7/2016 10:25:29 PM	Gathering full-text catalogs
+6/7/2016 10:25:29 PM	Gathering assemblies
+6/7/2016 10:25:29 PM	Gathering certificates
+6/7/2016 10:25:29 PM	Gathering asymmetric keys
+6/7/2016 10:25:29 PM	Gathering symmetric keys
+6/7/2016 10:25:29 PM	Gathering encrypted symmetric keys
+6/7/2016 10:25:29 PM	Gathering schemas
+6/7/2016 10:25:29 PM	Gathering XML schema collections
+6/7/2016 10:25:29 PM	Gathering user-defined data types
+6/7/2016 10:25:29 PM	Gathering user-defined types
+6/7/2016 10:25:29 PM	Gathering table types
+6/7/2016 10:25:29 PM	Gathering unique keys for table types
+6/7/2016 10:25:29 PM	Gathering primary keys for table types
+6/7/2016 10:25:29 PM	Gathering check constraints for table types
+6/7/2016 10:25:29 PM	Gathering default constraints for table types
+6/7/2016 10:25:29 PM	Gathering partition functions
+6/7/2016 10:25:29 PM	Gathering partition schemes
+6/7/2016 10:25:29 PM	Gathering functions
+6/7/2016 10:25:30 PM	Gathering encrypted functions
+6/7/2016 10:25:30 PM	Gathering aggregates
+6/7/2016 10:25:30 PM	Gathering procedures
+6/7/2016 10:25:31 PM	Gathering encrypted procedures
+6/7/2016 10:25:32 PM	Gathering tables
+6/7/2016 10:25:32 PM	Gathering primary keys
+6/7/2016 10:25:33 PM	Gathering unique constraints
+6/7/2016 10:25:33 PM	Gathering foreign keys
+6/7/2016 10:25:33 PM	Gathering default constraints
+6/7/2016 10:25:33 PM	Gathering check constraints
+6/7/2016 10:25:33 PM	Gathering views
+6/7/2016 10:25:33 PM	Gathering encrypted views
+6/7/2016 10:25:34 PM	Gathering indexes
+6/7/2016 10:25:34 PM	Gathering statistics
+6/7/2016 10:25:34 PM	Gathering full-text index stoplists
+6/7/2016 10:25:34 PM	Gathering search property lists
+6/7/2016 10:25:34 PM	Gathering search properties
+6/7/2016 10:25:34 PM	Gathering full-text indexes
+6/7/2016 10:25:34 PM	Gathering column store indexes
+6/7/2016 10:25:34 PM	Gathering spatial indexes
+6/7/2016 10:25:35 PM	Gathering XML indexes
+6/7/2016 10:25:35 PM	Gathering Selective XML indexes
+6/7/2016 10:25:35 PM	Gathering encrypted triggers
+6/7/2016 10:25:35 PM	Gathering triggers
+6/7/2016 10:25:35 PM	Gathering encrypted and clr ddl triggers
+6/7/2016 10:25:35 PM	Gathering ddl triggers
+6/7/2016 10:25:35 PM	Gathering synonyms
+6/7/2016 10:25:35 PM	Gathering defaults
+6/7/2016 10:25:35 PM	Gathering data constraint uddt bindings
+6/7/2016 10:25:35 PM	Gathering rules
+6/7/2016 10:25:35 PM	Gathering data constraint uddt bindings
+6/7/2016 10:25:35 PM	Gathering message types
+6/7/2016 10:25:35 PM	Gathering queues
+6/7/2016 10:25:35 PM	Gathering contracts
+6/7/2016 10:25:35 PM	Gathering services
+6/7/2016 10:25:38 PM	Gathering event notifications
+6/7/2016 10:25:38 PM	Gathering remote service bindings
+6/7/2016 10:25:38 PM	Gathering broker priorities
+6/7/2016 10:25:40 PM	Gathering signatures
+6/7/2016 10:25:40 PM	Gathering data compression options
+6/7/2016 10:25:40 PM	Gathering sequence types
+6/7/2016 10:25:40 PM	Gathering database permissions
+6/7/2016 10:25:41 PM	Gathering extended properties
+6/7/2016 10:25:47 PM	Gathering credentials
+6/7/2016 10:25:47 PM	Gathering logins
+6/7/2016 10:25:53 PM	Gathering server audits
+6/7/2016 10:26:07 PM	Scanning project for duplicate elements
+6/7/2016 10:26:08 PM	Finished duplicate element processing
+6/7/2016 10:26:09 PM	Finished importing database.
+6/7/2016 10:26:09 PM	A summary of the import was saved to the following location: C:\Work\IRM\IRMaaS\03Development\02SQLServer_Database_Projects\IRMaaS\IRMaaS\Import Schema Logs\IRMaaS_20160608032501.log
+6/7/2016 10:26:09 PM	Click Finish to continue...

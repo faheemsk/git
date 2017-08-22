@@ -1,0 +1,15 @@
+﻿CREATE TABLE [dbo].[ETL_AUD_LOG] (
+    [ETL_AUD_LOG_KEY]   INT           IDENTITY (1, 1) NOT NULL,
+    [JOB_NM]            VARCHAR (150) NOT NULL,
+    [JOB_STRT_DT]       DATETIME      NOT NULL,
+    [JOB_END_DT]        DATETIME      NULL,
+    [JOB_STS]           VARCHAR (100) NOT NULL,
+    [SRC_FL_NM]         VARCHAR (150) NULL,
+    [SRC_FL_FLDR_PTH]   VARCHAR (500) NULL,
+    [TGT_TBL_NM]        VARCHAR (50)  NULL,
+    [SRC_ROW_CNT]       INT           NULL,
+    [TGT_INSRT_ROW_CNT] INT           NULL,
+    [TGT_UPDT_ROW_CNT]  INT           NULL,
+    [TGT_REJ_ROW_CNT]   INT           NULL,
+    CONSTRAINT [PK_ETL_AUD_LOG] PRIMARY KEY CLUSTERED ([ETL_AUD_LOG_KEY] ASC)
+);

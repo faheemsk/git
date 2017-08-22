@@ -1,0 +1,48 @@
+﻿CREATE PROCEDURE [dbo].[Get_ClntEngmtUserAsgnByID]
+(
+       @CLNT_ENGMT_CD	VARCHAR(30)
+)
+AS
+BEGIN
+BEGIN TRY
+SET NOCOUNT ON
+
+	SELECT  DISTINCT A.CLNT_ENGMT_USER_ASGN_KEY, A.ROW_STS_KEY, A.CLNT_ENGMT_CD, A.USER_ID,B.EMAIL_ID,
+			A.CREAT_DT, A.CREAT_USER_ID,A.SECUR_SRVC_LIST_CD,B.USER_TYP_KEY,
+			dbo.fnGetMasterLkpNameByID(B.USER_TYP_KEY) [User Type],
+			[dbo].[fnGetUserNameByID](A.USER_ID) [User Name],B.ORG_KEY, ORG_NM 
+
+
+	FROM    CLNT_ENGMT_USER_ASGN    A
+	JOIN	USER_PRFL				B
+	ON		A.USER_ID		  =		B.USER_ID
+	JOIN	USER_APPL_ROLE			E
+	ON		B.USER_ID		  =     E.USER_ID
+	JOIN    APPL_ROLE				C
+	ON		C.APPL_ROLE_KEY	  =     E.APPL_ROLE_KEY
+	JOIN	ORG						D
+	ON      B.ORG_KEY		  =     D.ORG_KEY
+	WHERE   CLNT_ENGMT_CD    =		@CLNT_ENGMT_CD
+
+
+END TRY
+
+BEGIN CATCH
+
+    DECLARE @ErrorNumber INT = ERROR_NUMBER();
+    DECLARE @ErrorLine INT = ERROR_LINE();
+    DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+    DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+    DECLARE @ErrorState INT = ERROR_STATE();
+
+    PRINT 'Actual error number: ' + CAST(@ErrorNumber AS VARCHAR(10));
+    PRINT 'Actual line number: ' + CAST(@ErrorLine AS VARCHAR(10));
+
+    RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
+  END CATCH
+-- COMMIT TRANSACTION
+END;
+
+
+
+

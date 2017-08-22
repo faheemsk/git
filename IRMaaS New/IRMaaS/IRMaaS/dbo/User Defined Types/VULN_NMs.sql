@@ -1,0 +1,3 @@
+﻿CREATE TYPE [dbo].[VULN_NMs] AS TABLE (
+    [VULN_NM] NVARCHAR (255) NULL);
+

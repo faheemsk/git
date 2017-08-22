@@ -1,0 +1,60 @@
+﻿
+CREATE PROCEDURE [dbo].[Analyst_UpdateServiceStatusByEngServCode]
+(
+	
+	@CLNT_ENGMT_CD			VARCHAR(30),
+	@SECUR_SRVC_CD			VARCHAR(10),
+	@UserID					INTEGER,
+	@Status					INTEGER
+		
+
+)
+AS
+BEGIN
+
+
+BEGIN TRY
+SET NOCOUNT ON
+
+		IF @Status = 46
+	    BEGIN
+		UPDATE	CLNT_SECUR_SRVC_ENGMT
+		SET		SRVC_ENGMT_STS_KEY	 =  @Status,
+				UPDT_DT				 =	GETDATE(),
+				UPDT_USER_ID		 =	@UserID
+				WHERE	CLNT_ENGMT_CD	=	@CLNT_ENGMT_CD
+				AND     SECUR_SRVC_CD	=	@SECUR_SRVC_CD
+				SELECT @@ROWCOUNT AS RETVAL
+		END
+
+		IF @Status = 45
+		BEGIN
+		UPDATE	CLNT_SECUR_SRVC_ENGMT
+		SET		SRVC_ENGMT_STS_KEY	 =  @Status,
+				--UPDT_DT				 =	NULL,
+				UPDT_USER_ID		 =	@UserID
+				WHERE	CLNT_ENGMT_CD	=	@CLNT_ENGMT_CD
+				AND     SECUR_SRVC_CD	=	@SECUR_SRVC_CD
+				SELECT @@ROWCOUNT AS RETVAL
+		END
+
+
+
+END TRY
+
+BEGIN CATCH
+
+    DECLARE @ErrorNumber INT = ERROR_NUMBER();
+    DECLARE @ErrorLine INT = ERROR_LINE();
+    DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+    DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+    DECLARE @ErrorState INT = ERROR_STATE();
+
+    PRINT 'Actual error number: ' + CAST(@ErrorNumber AS VARCHAR(10));
+    PRINT 'Actual line number: ' + CAST(@ErrorLine AS VARCHAR(10));
+
+    RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
+  END CATCH
+-- COMMIT TRANSACTION
+END
+

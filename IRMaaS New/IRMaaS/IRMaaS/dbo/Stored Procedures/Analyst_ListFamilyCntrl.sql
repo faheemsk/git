@@ -1,0 +1,33 @@
+﻿
+CREATE PROCEDURE [dbo].[Analyst_ListFamilyCntrl]
+
+AS
+BEGIN
+
+
+BEGIN TRY
+SET NOCOUNT ON
+
+			SELECT  REG_CMPLN_CD, REG_CMPLN_VER,SECUR_CTL_FAM_CD,SECUR_CTL_FAM_NM,SECUR_OBJ_CD,SECUR_OBJ_NM,SECUR_CTL_NM,
+			SECUR_CTL_DESC,SECUR_CTL_CD
+			FROM	SECUR_CTL		
+			WHERE	REG_CMPLN_CD= 'HITRUST'	
+		  
+END TRY
+
+BEGIN CATCH
+
+    DECLARE @ErrorNumber INT = ERROR_NUMBER();
+    DECLARE @ErrorLine INT = ERROR_LINE();
+    DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+    DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+    DECLARE @ErrorState INT = ERROR_STATE();
+
+    PRINT 'Actual error number: ' + CAST(@ErrorNumber AS VARCHAR(10));
+    PRINT 'Actual line number: ' + CAST(@ErrorLine AS VARCHAR(10));
+
+    RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
+  END CATCH
+-- COMMIT TRANSACTION
+END
+

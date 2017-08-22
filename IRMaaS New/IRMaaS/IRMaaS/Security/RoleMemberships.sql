@@ -1,0 +1,130 @@
+﻿ALTER ROLE [db_owner] ADD MEMBER [OSSDEV1SQL2];
+
+
+GO
+ALTER ROLE [db_owner] ADD MEMBER [HEALTHITPLUS\Administrator];
+
+
+GO
+ALTER ROLE [db_owner] ADD MEMBER [HEALTHITPLUS\OSSDEVSQLAdmin];
+
+
+GO
+ALTER ROLE [db_owner] ADD MEMBER [HEALTHITPLUS\OSSDEVDBAdmin];
+
+
+GO
+ALTER ROLE [db_owner] ADD MEMBER [ods_dev];
+
+
+GO
+ALTER ROLE [db_accessadmin] ADD MEMBER [HEALTHITPLUS\Administrator];
+
+
+GO
+ALTER ROLE [db_accessadmin] ADD MEMBER [HEALTHITPLUS\OSSDEVSQLAdmin];
+
+
+GO
+ALTER ROLE [db_accessadmin] ADD MEMBER [HEALTHITPLUS\OSSDEVDBAdmin];
+
+
+GO
+ALTER ROLE [db_securityadmin] ADD MEMBER [HEALTHITPLUS\Administrator];
+
+
+GO
+ALTER ROLE [db_securityadmin] ADD MEMBER [HEALTHITPLUS\OSSDEVSQLAdmin];
+
+
+GO
+ALTER ROLE [db_ddladmin] ADD MEMBER [OSSDEV1SQL2];
+
+
+GO
+ALTER ROLE [db_ddladmin] ADD MEMBER [HEALTHITPLUS\Administrator];
+
+
+GO
+ALTER ROLE [db_ddladmin] ADD MEMBER [HEALTHITPLUS\OSSDEVSQLAdmin];
+
+
+GO
+ALTER ROLE [db_ddladmin] ADD MEMBER [HEALTHITPLUS\OSSDEVDBWrite];
+
+
+GO
+ALTER ROLE [db_ddladmin] ADD MEMBER [HEALTHITPLUS\OSSDEVDBAdmin];
+
+
+GO
+ALTER ROLE [db_backupoperator] ADD MEMBER [OSSDEV1SQL2];
+
+
+GO
+ALTER ROLE [db_backupoperator] ADD MEMBER [HEALTHITPLUS\Administrator];
+
+
+GO
+ALTER ROLE [db_backupoperator] ADD MEMBER [HEALTHITPLUS\OSSDEVSQLAdmin];
+
+
+GO
+ALTER ROLE [db_backupoperator] ADD MEMBER [HEALTHITPLUS\OSSDEVDBWrite];
+
+
+GO
+ALTER ROLE [db_backupoperator] ADD MEMBER [HEALTHITPLUS\OSSDEVDBAdmin];
+
+
+GO
+ALTER ROLE [db_datareader] ADD MEMBER [OSSDEV1SQL2];
+
+
+GO
+ALTER ROLE [db_datareader] ADD MEMBER [HEALTHITPLUS\Administrator];
+
+
+GO
+ALTER ROLE [db_datareader] ADD MEMBER [HEALTHITPLUS\OSSDEVSQLAdmin];
+
+
+GO
+ALTER ROLE [db_datareader] ADD MEMBER [HEALTHITPLUS\OSSDEVDBWrite];
+
+
+GO
+ALTER ROLE [db_datareader] ADD MEMBER [HEALTHITPLUS\OSSDEVDBRead];
+
+
+GO
+ALTER ROLE [db_datareader] ADD MEMBER [HEALTHITPLUS\OSSDEVDBAdmin];
+
+
+GO
+ALTER ROLE [db_datareader] ADD MEMBER [ods_dev];
+
+
+GO
+ALTER ROLE [db_datawriter] ADD MEMBER [OSSDEV1SQL2];
+
+
+GO
+ALTER ROLE [db_datawriter] ADD MEMBER [HEALTHITPLUS\Administrator];
+
+
+GO
+ALTER ROLE [db_datawriter] ADD MEMBER [HEALTHITPLUS\OSSDEVSQLAdmin];
+
+
+GO
+ALTER ROLE [db_datawriter] ADD MEMBER [HEALTHITPLUS\OSSDEVDBWrite];
+
+
+GO
+ALTER ROLE [db_datawriter] ADD MEMBER [HEALTHITPLUS\OSSDEVDBAdmin];
+
+
+GO
+ALTER ROLE [db_datawriter] ADD MEMBER [ods_dev];
+

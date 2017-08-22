@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>IRMaaS</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{2d42015c-a652-48ec-9e7f-1878a07c6d2b}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>IRMaaS</RootNamespace>
+    <AssemblyName>IRMaaS</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetLanguage>VB</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="stg\" />
+    <Folder Include="stg\Tables\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="PostScripts" />
+    <Folder Include="Schemas" />
+    <Folder Include="dbo\User Defined Types" />
+    <Folder Include="dbo\Views" />
+    <Folder Include="Snapshots" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\SECUR_CTL.sql" />
+    <Build Include="dbo\Tables\SECUR_CTL_MAP.sql" />
+    <Build Include="dbo\Tables\SECUR_PKG.sql" />
+    <Build Include="dbo\Tables\SECUR_PKG_OFR.sql" />
+    <Build Include="dbo\Tables\APPL_FL_UPLOAD_LOG.sql" />
+    <Build Include="dbo\Tables\SECUR_SRVC.sql" />
+    <Build Include="dbo\Tables\ST_CD.sql" />
+    <Build Include="dbo\Tables\USER_APPL_ROLE.sql" />
+    <Build Include="dbo\Tables\USER_EMAIL_LOG.sql" />
+    <Build Include="dbo\Tables\USER_EVNT_LOG.sql" />
+    <Build Include="dbo\Tables\USER_PRFL.sql" />
+    <Build Include="dbo\Tables\USER_SECUR_DTL.sql" />
+    <Build Include="stg\Tables\CISCO_PEN_TST_STG.sql" />
+    <Build Include="dbo\Tables\USER_SESS_LOG.sql" />
+    <Build Include="dbo\Tables\VULN_IMP.sql" />
+    <Build Include="dbo\Tables\VULN_INSTC_STS.sql" />
+    <Build Include="stg\Tables\CISCO_SECUR_RISK_ASES_STG.sql" />
+    <Build Include="dbo\Tables\VULN_SEV.sql" />
+    <Build Include="dbo\Tables\CLNT_VULN_INSTC.sql" />
+    <Build Include="stg\Tables\SECUR_CTL_MAP_STG.sql" />
+    <Build Include="dbo\Tables\RPT_FL_UPLOAD_LOG.sql" />
+    <Build Include="stg\Tables\REG_CMPLN_STG.sql" />
+    <Build Include="dbo\Tables\RPT_NM.sql" />
+    <Build Include="stg\Tables\SECUR_CTL_STG.sql" />
+    <Build Include="dbo\Tables\APPL_ROLE.sql" />
+    <Build Include="dbo\Tables\APPL_ROLE_PERMSN_GRP.sql" />
+    <Build Include="dbo\Tables\CD_XREF.sql" />
+    <Build Include="dbo\Tables\CLNT_ENGMT.sql" />
+    <Build Include="dbo\Tables\OS.sql" />
+    <Build Include="dbo\Tables\OS_CATGY.sql" />
+    <Build Include="dbo\Tables\CLNT_REL_ENGMT_ID.sql" />
+    <Build Include="dbo\Tables\ORG_REL_ID.sql" />
+    <Build Include="dbo\Tables\CLNT_SECUR_SRVC_ENGMT.sql" />
+    <Build Include="dbo\Tables\CLNT_VULN_SECUR_CTL.sql" />
+    <Build Include="dbo\Tables\CNTRY_CD.sql" />
+    <Build Include="dbo\Tables\CVE.sql" />
+    <Build Include="dbo\Tables\CVE_SECUR_CTL_MAP.sql" />
+    <Build Include="dbo\Tables\CVSS_SCOR_MTRC.sql" />
+    <Build Include="dbo\Tables\ETL_AUD_LOG.sql" />
+    <Build Include="dbo\Tables\ETL_ERR_LOG.sql" />
+    <Build Include="dbo\Tables\MSTR_LKP.sql" />
+    <Build Include="dbo\Tables\NTF_MSG.sql" />
+    <Build Include="dbo\Tables\ORG.sql" />
+    <Build Include="dbo\Tables\PERMSN.sql" />
+    <Build Include="dbo\Tables\PERMSN_GRP.sql" />
+    <Build Include="dbo\Tables\PERMSN_GRP_ASSOC.sql" />
+    <Build Include="dbo\Tables\REG_CMPLN.sql" />
+    <Build Include="dbo\Tables\CLNT_ENGMT_USER_ASGN.sql" />
+    <Build Include="dbo\Tables\RISK_PRBL.sql" />
+    <Build Include="dbo\Tables\RMDTN_CST_EFFRT.sql" />
+    <Build Include="dbo\Tables\USER_CLNT_SRVC_ASGN.sql" />
+    <Build Include="dbo\Functions\fnGetMasterLkpID.sql" />
+    <Build Include="dbo\Functions\fnGetMasterLkpNameByID.sql" />
+    <Build Include="dbo\Functions\fnGetParentOrgNameID.sql" />
+    <Build Include="dbo\Functions\fnGetUserNameByID.sql" />
+    <Build Include="dbo\Functions\FnSplit.sql" />
+    <Build Include="dbo\Functions\fnGetSecurCtlMap.sql" />
+    <Build Include="dbo\Stored Procedures\GetUserDetailsByName.sql" />
+    <Build Include="dbo\Stored Procedures\GetUserPermissionsByName.sql" />
+    <Build Include="dbo\Stored Procedures\GetUserRolenamesByID.sql" />
+    <Build Include="dbo\Stored Procedures\GetUserSecurityDetailsByName.sql" />
+    <Build Include="dbo\Stored Procedures\GetUserSessLogByID.sql" />
+    <Build Include="dbo\Stored Procedures\INS_APPL_FL_UPLOAD_LOG.sql" />
+    <Build Include="dbo\Stored Procedures\INS_APPL_ROLE.sql" />
+    <Build Include="dbo\Stored Procedures\INS_APPL_ROLE_PERMSN_GRP.sql" />
+    <Build Include="dbo\Stored Procedures\INS_CLNT_ENGMT.sql" />
+    <Build Include="dbo\Stored Procedures\INS_CLNT_ENGMT_USER_ASGN.sql" />
+    <Build Include="dbo\Stored Procedures\INS_CLNT_REL_ENGMT_INDENTIFIER.sql" />
+    <Build Include="dbo\Stored Procedures\INS_CLNT_SECUR_SRVC_ENGMT.sql" />
+    <Build Include="dbo\Stored Procedures\INS_EngagementAssignUsers.sql" />
+    <Build Include="dbo\Stored Procedures\INS_MSTR_LKP.sql" />
+    <Build Include="dbo\Stored Procedures\INS_ORG.sql" />
+    <Build Include="dbo\Stored Procedures\INS_ORG_RELID.sql" />
+    <Build Include="dbo\Stored Procedures\INS_PERMSN.sql" />
+    <Build Include="dbo\Stored Procedures\INS_PERMSN_GRP.sql" />
+    <Build Include="dbo\Stored Procedures\INS_PERMSN_GRP_ASSOC.sql" />
+    <Build Include="dbo\Stored Procedures\INS_USER_APPL_ROLE.sql" />
+    <Build Include="dbo\Stored Procedures\INS_USER_CLNT_SRVC_ASGN.sql" />
+    <Build Include="dbo\Stored Procedures\INS_USER_EMAIL_LOG.sql" />
+    <Build Include="dbo\Stored Procedures\INS_USER_EVNT_LOG.sql" />
+    <Build Include="dbo\Stored Procedures\INS_USER_PRFL.sql" />
+    <Build Include="dbo\Stored Procedures\MERGE_SECUR_CTL.sql" />
+    <Build Include="dbo\Stored Procedures\INS_USER_SECUR_DTL.sql" />
+    <Build Include="dbo\Stored Procedures\INS_USER_SESS_LOG.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_AppRole.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_AppRoleByRoleID.sql" />
+    <Build Include="dbo\Stored Procedures\MERGE_SECUR_CTL_MAP.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_Country.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_EngagementdatauploadbyUserid.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_ManageEngagements.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_MasterLookupByEntityType.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_OrglistByUserType.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_PermissionGroups.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_PermissionGroupsByPermGropID.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_PermissionGroupsByRole.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_PermissionGroupsByUserID.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_Permissions.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_Roles.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_SecurPkg.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_SecurServices.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_SecurSrvcOfr.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_ServicesByPkgkey.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_StateByCountry.sql" />
+    <Build Include="dbo\Stored Procedures\List_UserByOrgIDandUserType.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_UserClntSrvcAssn.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_UserClntSrvcAssnTest.sql" />
+    <Build Include="dbo\Stored Procedures\LIST_UserNotSentEmails.sql" />
+    <Build Include="dbo\Stored Procedures\List_UserWorklistByOrg.sql" />
+    <Build Include="dbo\Stored Procedures\SEARCH_UserClntSrvcAssn.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_AppRoleByID.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_AppRolePermsnGrpStatusByID.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_CLNT_ENGMT.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_CLNTENGMTUSERASGN.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_CLNTRELENGMTINDENTIFIER.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_CLNTSECURSRVCENGMT.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_EngagementDeactive.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_EngagementServicedatebyEngservcode.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_LastloginbyUserid.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_LastLogindtbyUserid.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_LockedIndicatorInUserProfile.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_LockUnlockService.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_LoginAttemptsinUserProfile.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_ListOS.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_NtfMsgByID.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_GetCROSSWALKBYCNTLCD.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_NTFMSGBYTYPE.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_REGCMPLNBYCVEID.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_OrgByID.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_OrgRelIDByID.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_PermsnDescriptionByID.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_PermsnGrpByID.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_PermsnGrpStatusByID.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_UnlockUser.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_USER_PRFL.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_USER_SESS_LOG.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_UserApplRoleByID.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_USERCLNTSRVCASGN.sql" />
+    <Build Include="dbo\Stored Procedures\Get_UploadedFileSize.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_UserEmailLogByKey.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateFileStatus.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_UserPasswordDetailsbyUID.sql" />
+    <Build Include="dbo\Stored Procedures\Reports_INSReportFileUploadLog.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_UserSecurDtlByID.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_GetClientVulnerabiltysecctrlByVulnkey.sql" />
+    <Build Include="dbo\Stored Procedures\Reports_UpdateReportFileUploadLog.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_VERIFICATIONINDICATORBYUSERID.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_GetComplianceInfoBycveID.sql" />
+    <Build Include="dbo\Stored Procedures\Report_ListReportNames.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_GetCVEInformationByID.sql" />
+    <Build Include="dbo\Stored Procedures\Report_GetReportWorkList.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_GetCVSSMetricScore.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_GetEngmtAnalystWorkList.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_GetRiskByCvssScore.sql" />
+    <Build Include="dbo\Stored Procedures\INS_ETL_AUD_LOG.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_GetVulnerabilityDetailsByID.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_ETL_AUD_LOG.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_GetVulnerabilityInfoByID.sql" />
+    <Build Include="dbo\Stored Procedures\INS_ETL_ERR_LOG.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_GetVulnerabilityInstcBycd.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_INS_CLNT_VULN_INSTC.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_INSClientVulnerabiltysecctrl.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_ListCntrlByFamilyID.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_ListCostEffort.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_ListFamilyCntrl.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_ListServicesByEngmt.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_ListStatus.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_ListVulnerability.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_ListVulnerabilityDetails.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_UpdateRowstatusByVulKey.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_UpdateServiceStatusByEngServCode.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_UpdateVulnerabilityInstance.sql" />
+    <Build Include="dbo\Stored Procedures\Check_AuthoritativeSourceName.sql" />
+    <Build Include="dbo\Stored Procedures\Check_FileExistbyEngservicecode.sql" />
+    <Build Include="dbo\Stored Procedures\Check_OrgNameByName.sql" />
+    <Build Include="dbo\Stored Procedures\Check_PERMSN_GRPName.sql" />
+    <Build Include="dbo\Stored Procedures\Check_ROLEName.sql" />
+    <Build Include="dbo\Stored Procedures\DEL_CLNTENGMTUSERASGN.sql" />
+    <Build Include="dbo\Stored Procedures\DEL_CLNTRELENGMTINDENTIFIER.sql" />
+    <Build Include="dbo\Stored Procedures\DEL_CLNTSECURSRVCENGMT.sql" />
+    <Build Include="dbo\Stored Procedures\DEL_PartnerAnlistByEngCode.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateFileStatusETLFailure.sql" />
+    <Build Include="dbo\Stored Procedures\DEL_UploadfilebyID.sql" />
+    <Build Include="dbo\Stored Procedures\Get_ClntEngmtByID.sql" />
+    <Build Include="dbo\Stored Procedures\Get_ClntEngmtUserAsgnByID.sql" />
+    <Build Include="dbo\Stored Procedures\Get_ClntRelEngmtIndenByID.sql" />
+    <Build Include="dbo\Stored Procedures\Get_ClntSecurSrvcEngmtByID.sql" />
+    <Build Include="dbo\Stored Procedures\Get_EngageServiceByServiceID.sql" />
+    <Build Include="dbo\Stored Procedures\Get_OrgDetailsByID.sql" />
+    <Build Include="dbo\Stored Procedures\Get_OrgRelDetailsByID.sql" />
+    <Build Include="dbo\Stored Procedures\Get_UploadedFiles.sql" />
+    <Build Include="dbo\Stored Procedures\GetAnalystDeatilsByEngandSerID.sql" />
+    <Build Include="dbo\Stored Procedures\GetAppRoleDetailsByID.sql" />
+    <Build Include="dbo\Stored Procedures\GetEmailIDbyUserID.sql" />
+    <Build Include="dbo\Stored Procedures\GetEmailNotificationByType.sql" />
+    <Build Include="dbo\Stored Procedures\GetEngagementCount.sql" />
+    <Build Include="dbo\Stored Procedures\GetEngagementduedatehaspassed.sql" />
+    <Build Include="dbo\Stored Procedures\MERGE_CVE_SECUR_CTL_MAP.sql" />
+    <Build Include="dbo\Stored Procedures\MERGE_REG_CMPLN.sql" />
+    <Build Include="dbo\Stored Procedures\GetEngagementduedateisapproachingEmail.sql" />
+    <Build Include="dbo\Stored Procedures\GetEngagementServiceduedatehaspassedEmials.sql" />
+    <Build Include="dbo\Stored Procedures\GetEngDuedateapprochingEmailDeails.sql" />
+    <Build Include="dbo\Stored Procedures\GetEngmtUploadWorkList.sql" />
+    <Build Include="dbo\Stored Procedures\GetEngserveicePastDuedateEmailDeails.sql" />
+    <Build Include="dbo\Stored Procedures\GetEntityIDByName.sql" />
+    <Build Include="dbo\Stored Procedures\GetLeadDeatilsByEngandSerID.sql" />
+    <Build Include="dbo\Stored Procedures\GetLockallservicemail.sql" />
+    <Build Include="dbo\Stored Procedures\GetUserDetailsByID.sql" />
+    <Build Include="Schemas\stg.sql" />
+    <None Include="PostScripts\dbo.CD_XREF.Table.sql" />
+    <None Include="PostScripts\dbo.CNTRY_CD.Table.sql" />
+    <None Include="PostScripts\dbo.CVSS_SCOR_MTRC.Table.sql" />
+    <None Include="PostScripts\dbo.MSTR_LKP.Table.sql" />
+    <None Include="PostScripts\dbo.NTF_MSG.Table.sql" />
+    <None Include="PostScripts\dbo.ORG.Table.sql" />
+    <None Include="PostScripts\dbo.PERMSN.Table.sql" />
+    <None Include="PostScripts\dbo.RISK_PRBL.Table.sql" />
+    <None Include="PostScripts\dbo.RMDTN_CST_EFFRT.Table.sql" />
+    <None Include="PostScripts\dbo.ROOT_CAUS_ANLYS.Table.sql" />
+    <None Include="PostScripts\dbo.RPT_NM.Table.sql" />
+    <None Include="PostScripts\dbo.SECUR_PKG.Table.sql" />
+    <None Include="PostScripts\dbo.SECUR_PKG_OFR.Table.sql" />
+    <None Include="PostScripts\dbo.SECUR_SRVC.Table.sql" />
+    <None Include="PostScripts\dbo.ST_CD.Table.sql" />
+    <None Include="PostScripts\dbo.USER_PRFL.Table.sql" />
+    <None Include="PostScripts\dbo.VULN_IMP.Table.sql" />
+    <None Include="PostScripts\dbo.VULN_INSTC_STS.Table.sql" />
+    <None Include="PostScripts\dbo.VULN_SEV.Table.sql" />
+    <None Include="PostScripts\dbo.OS_CATGY.Table.sql" />
+    <Build Include="dbo\Stored Procedures\Report_FindingAssessments.sql" />
+    <Build Include="dbo\Stored Procedures\Report_FindingDetails.sql" />
+    <Build Include="dbo\Stored Procedures\Report_FindingDetailsByID.sql" />
+    <Build Include="dbo\Stored Procedures\Report_FindingsCount.sql" />
+    <Build Include="dbo\Stored Procedures\Report_GetHitrustInfoByCD.sql" />
+    <Build Include="dbo\Stored Procedures\Report_GetRemediationFindingListByEngmtcd.sql" />
+    <Build Include="dbo\Stored Procedures\Report_GetRemediationPMWorkList.sql" />
+    <Build Include="dbo\Stored Procedures\Report_GetVulnerabilityCSV.sql" />
+    <Build Include="dbo\Stored Procedures\Report_InstanceByIssues.sql" />
+    <Build Include="dbo\Stored Procedures\Report_ListEngmts.sql" />
+    <Build Include="dbo\Stored Procedures\Report_ListObjective.sql" />
+    <Build Include="dbo\Stored Procedures\Report_ListReportFileUpload.sql" />
+    <Build Include="dbo\Stored Procedures\REPORT_PRIORITYMATRIX.sql" />
+    <Build Include="dbo\Stored Procedures\Report_ProbabilityImapct.sql" />
+    <Build Include="dbo\Stored Procedures\Report_Remediation.sql" />
+    <Build Include="dbo\Stored Procedures\Report_RemediationVulnerabilities.sql" />
+    <Build Include="dbo\Stored Procedures\Report_RouteCauseAnalysis.sql" />
+    <Build Include="dbo\Stored Procedures\Report_Severity.sql" />
+    <Build Include="dbo\Stored Procedures\Report_TopApplications.sql" />
+    <Build Include="dbo\Stored Procedures\Report_TopApplicationSeverity.sql" />
+    <Build Include="dbo\Stored Procedures\Report_TopApplicationVULN.sql" />
+    <Build Include="dbo\Stored Procedures\Report_TopHitrust.sql" />
+    <Build Include="dbo\Stored Procedures\Report_TopHost.sql" />
+    <Build Include="dbo\Stored Procedures\Report_TopOSCategories.sql" />
+    <Build Include="dbo\Stored Procedures\Report_TopSSID.sql" />
+    <Build Include="dbo\Stored Procedures\Report_TopVulnerabilities.sql" />
+    <Build Include="dbo\Stored Procedures\Report_UpdateFileStatus.sql" />
+    <Build Include="dbo\Stored Procedures\Report_UpdateVlunarabilityStatus.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_ListSeverity.sql" />
+    <Build Include="dbo\Stored Procedures\Get_ScanFailedFiles.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_EngagementPublishStatus.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_EngagementStatus.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_ScanFailedStatus.sql" />
+    <Build Include="dbo\Functions\fnGetServiceNameBycode.sql" />
+    <Build Include="dbo\Functions\fnGetUserEmailByID.sql" />
+    <Build Include="dbo\User Defined Types\OS_NMs.sql" />
+    <Build Include="dbo\Stored Procedures\MERGE_CVE.sql" />
+    <Build Include="dbo\Stored Procedures\MERGE_OS_MAP.sql" />
+    <Build Include="stg\Tables\TRIPWIRE_IP360_STG.sql" />
+    <Build Include="dbo\Stored Procedures\Report_AppFindingDetail.sql" />
+    <Build Include="dbo\Stored Procedures\Report_GetReportWorkListSearch.sql" />
+    <Build Include="dbo\Stored Procedures\Get_UploadedFileCountByStatus.sql" />
+    <Build Include="dbo\Stored Procedures\Report_GetFindingsCSV.sql" />
+    <Build Include="dbo\Stored Procedures\Check_FileExistbyReportName.sql" />
+    <Build Include="dbo\Stored Procedures\Report_ListReportUploadlogByCode.sql" />
+    <Build Include="dbo\Tables\OS_CATGY_MAP.sql" />
+    <Build Include="stg\Tables\CMN_FMT_V1_STG.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_ListManualVulnerabilities.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_ListSource.sql" />
+    <Build Include="dbo\Stored Procedures\List_PasswordResetUsers.sql" />
+    <Build Include="dbo\Stored Procedures\Report_RemediationPriority.sql" />
+    <Build Include="dbo\Stored Procedures\REPORT_MatrixFindings.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_ListCve.sql" />
+    <Build Include="dbo\Tables\OWASP_TOP_10.sql" />
+    <None Include="PostScripts\dbo.APPL_ROLE.Table.sql" />
+    <None Include="PostScripts\dbo.APPL_ROLE_PERMSN_GRP.Table.sql" />
+    <None Include="PostScripts\dbo.PERMSN_GRP.Table.sql" />
+    <None Include="PostScripts\dbo.PERMSN_GRP_ASSOC.Table.sql" />
+    <None Include="PostScripts\dbo.USER_APPL_ROLE.Table.sql" />
+    <None Include="PostScripts\dbo.USER_SECUR_DTL.Table.sql" />
+    <Build Include="dbo\Tables\VULN_CATGY.sql" />
+    <Build Include="dbo\Tables\CLNT_SCHM_LOG.sql" />
+    <Build Include="dbo\Stored Procedures\MERGE_CLNT_VULN_INSTC_CISCO_PEN_TST_MT.sql" />
+    <Build Include="dbo\Stored Procedures\MERGE_CLNT_VULN_INSTC_CISCO_SECUR_RISK_ASES_MT.sql" />
+    <Build Include="dbo\Stored Procedures\MERGE_CLNT_VULN_INSTC_CMN_FMT_V1_MT.sql" />
+    <Build Include="dbo\Stored Procedures\MERGE_CLNT_VULN_INSTC_TRIPWIRE_IP360_MT.sql" />
+    <Build Include="dbo\Stored Procedures\MERGE_CLNT_VULN_SECUR_CTL_MT.sql" />
+    <Build Include="dbo\Stored Procedures\GetOrgSchmaLogByID.sql" />
+    <Build Include="dbo\Stored Procedures\GetSchmaByEngmtCD.sql" />
+    <Build Include="dbo\Stored Procedures\UPDOrgSchmaInd.sql" />
+    <Build Include="dbo\Stored Procedures\CreateSchema.sql" />
+    <Build Include="dbo\Stored Procedures\CreateSchemaTables.sql" />
+    <Build Include="dbo\Stored Procedures\CreateSchemaView.sql" />
+    <Build Include="dbo\Stored Procedures\CreateSchemaETLTables.sql" />
+    <Build Include="dbo\Stored Procedures\INSCLNT_SCHM_LOG.sql" />
+    <Build Include="dbo\Stored Procedures\Report_TopOWASP.sql" />
+    <Build Include="dbo\Stored Procedures\Report_VULNCATGY.sql" />
+    <Build Include="dbo\Stored Procedures\Analyst_ListVULNCATGY.sql" />
+    <Build Include="dbo\Stored Procedures\Report_ListServiceswithFindings.sql" />
+    <Build Include="dbo\User Defined Types\VULN_NMs.sql" />
+    <Build Include="dbo\Stored Procedures\MERGE_VULN_CATGY_MAP.sql" />
+    <Build Include="dbo\Tables\VULN.sql" />
+    <None Include="PostScripts\dbo.VULN_CATGY.Table.sql" />
+    <Build Include="dbo\Stored Procedures\INSVULN.sql" />
+    <Build Include="dbo\Stored Procedures\Check_VULNName.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PostScripts\dbo.OWASP_TOP_10.Table.sql" />
+  </ItemGroup>
+</Project>

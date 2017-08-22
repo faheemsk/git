@@ -1,0 +1,22 @@
+﻿CREATE TABLE [dbo].[CVE] (
+    [CVE_ID]         VARCHAR (25)    NOT NULL,
+    [CVE_DESC]       VARCHAR (4000)  NULL,
+    [PUBL_DT]        DATETIME        NULL,
+    [LST_MOD_DT]     DATETIME        NULL,
+    [CWE_ID]         VARCHAR (50)    NULL,
+    [BAS_SCOR]       DECIMAL (10, 2) NULL,
+    [ACS_VCTR]       VARCHAR (100)   NULL,
+    [ACS_CMPLX]      VARCHAR (100)   NULL,
+    [AUTH]           VARCHAR (100)   NULL,
+    [CONFDTY_IMP]    VARCHAR (100)   NULL,
+    [INGTY_IMP]      VARCHAR (100)   NULL,
+    [AVL_IMP]        VARCHAR (100)   NULL,
+    [VCTR_TXT]       VARCHAR (50)    NULL,
+    [IMP_SUB_SCOR]   DECIMAL (10, 2) NULL,
+    [EXPLT_SUB_SCOR] DECIMAL (10, 2) NULL,
+    [CREAT_DT]       DATETIME        NOT NULL,
+    [CREAT_USER_ID]  INT             NOT NULL,
+    [UPDT_DT]        DATETIME        NULL,
+    [UPDT_USER_ID]   INT             NULL,
+    CONSTRAINT [PK_CVE] PRIMARY KEY CLUSTERED ([CVE_ID] ASC)
+);

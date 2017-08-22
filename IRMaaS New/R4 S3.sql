@@ -1,0 +1,1136 @@
+DELETE FROM SECUR_PKG_OFR WHERE SECUR_SRVC_CD='AC'
+DELETE FROM RPT_NM  WHERE SECUR_SRVC_CD='AC'
+DELETE FROM SECUR_SRVC WHERE SECUR_SRVC_CD='AC'
+
+GO
+
+/****** Object:  Table [dbo].[CSA_REF_ARCH_DOM]    Script Date: 2/2/2017 12:16:51 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[CSA_REF_ARCH_DOM](
+	[CSA_DOM_CD] [varchar](10) NOT NULL,
+	[CSA_DOM_NM] [varchar](150) NULL,
+	[CREAT_DT] [datetime] NOT NULL,
+	[CREAT_USER_ID] [int] NOT NULL,
+	[UPDT_DT] [datetime] NULL,
+	[UPDT_USER_ID] [int] NULL,
+ CONSTRAINT [PK_CSA_REF_ARCH_DOM] PRIMARY KEY CLUSTERED 
+(
+	[CSA_DOM_CD] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+go
+ALTER TABLE VULN_CATGY ADD  CSA_DOM_CD           varchar(10)  NULL
+
+
+
+--
+GO
+
+/****** Object:  Table [dbo].[ROADMAP_TMLN]    Script Date: 2/8/2017 11:27:30 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[ROADMAP_TMLN](
+	[ROADMAP_TMLN_CD] [char](1) NOT NULL,
+	[ROADMAP_TMLN_NM] [varchar](50) NULL,
+	[CREAT_DT] [datetime] NOT NULL,
+	[CREAT_USER_ID] [int] NOT NULL,
+	[UPDT_DT] [datetime] NULL,
+	[UPDT_USER_ID] [int] NULL,
+ CONSTRAINT [PK_ROADMAP_TMLN] PRIMARY KEY CLUSTERED 
+(
+	[ROADMAP_TMLN_CD] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+
+--
+GO
+
+/****** Object:  Table [dbo].[ROADMAP_TMLN_MTRX]    Script Date: 2/8/2017 11:26:31 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[ROADMAP_TMLN_MTRX](
+	[VULN_SEV_CD] [varchar](3) NOT NULL,
+	[RMDTN_CST_EFFRT_CD] [varchar](3) NOT NULL,
+	[ROADMAP_TMLN_CD] [char](1) NOT NULL,
+	[CREAT_DT] [datetime] NOT NULL,
+	[CREAT_USER_ID] [int] NOT NULL,
+	[UPDT_DT] [datetime] NULL,
+	[UPDT_USER_ID] [int] NULL,
+ CONSTRAINT [PK_ROADMAP_TMLN_MTRX] PRIMARY KEY CLUSTERED 
+(
+	[VULN_SEV_CD] ASC,
+	[RMDTN_CST_EFFRT_CD] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[ROADMAP_TMLN_MTRX]  WITH CHECK ADD  CONSTRAINT [FK_RMDTN_CST_EFFRT_135] FOREIGN KEY([RMDTN_CST_EFFRT_CD])
+REFERENCES [dbo].[RMDTN_CST_EFFRT] ([RMDTN_CST_EFFRT_CD])
+GO
+
+ALTER TABLE [dbo].[ROADMAP_TMLN_MTRX] CHECK CONSTRAINT [FK_RMDTN_CST_EFFRT_135]
+GO
+
+ALTER TABLE [dbo].[ROADMAP_TMLN_MTRX]  WITH CHECK ADD  CONSTRAINT [FK_ROADMAP_TMLN_133] FOREIGN KEY([ROADMAP_TMLN_CD])
+REFERENCES [dbo].[ROADMAP_TMLN] ([ROADMAP_TMLN_CD])
+GO
+
+ALTER TABLE [dbo].[ROADMAP_TMLN_MTRX] CHECK CONSTRAINT [FK_ROADMAP_TMLN_133]
+GO
+
+ALTER TABLE [dbo].[ROADMAP_TMLN_MTRX]  WITH CHECK ADD  CONSTRAINT [FK_VULN_SEV_134] FOREIGN KEY([VULN_SEV_CD])
+REFERENCES [dbo].[VULN_SEV] ([VULN_SEV_CD])
+GO
+
+ALTER TABLE [dbo].[ROADMAP_TMLN_MTRX] CHECK CONSTRAINT [FK_VULN_SEV_134]
+GO
+
+
+
+GO
+
+/****** Object:  Table [dbo].[VULN_CATGY]    Script Date: 2/8/2017 11:24:09 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[VULN_CATGY](
+	[VULN_CATGY_CD] [varchar](10) NOT NULL,
+	[VULN_CATGY_NM] [varchar](150) NOT NULL,
+	[VULN_CATGY_DESC] [varchar](1000) NULL,
+	[CREAT_DT] [datetime] NOT NULL,
+	[CREAT_USER_ID] [int] NOT NULL,
+	[UPDT_DT] [datetime] NULL,
+	[UPDT_USER_ID] [int] NULL,
+	[CSA_DOM_CD] [varchar](10) NULL,
+ CONSTRAINT [PK_VULN_CATGY] PRIMARY KEY CLUSTERED 
+(
+	[VULN_CATGY_CD] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[VULN_CATGY]  WITH CHECK ADD  CONSTRAINT [FK_CSA_REF_ARCH_DOM_124] FOREIGN KEY([CSA_DOM_CD])
+REFERENCES [dbo].[CSA_REF_ARCH_DOM] ([CSA_DOM_CD])
+GO
+
+ALTER TABLE [dbo].[VULN_CATGY] CHECK CONSTRAINT [FK_CSA_REF_ARCH_DOM_124]
+GO
+
+
+
+go
+
+  INSERT CSA_REF_ARCH_DOM (CSA_DOM_CD,CSA_DOM_NM,CREAT_DT,CREAT_USER_ID)
+  VALUES	  ('AS','Application Services',GETDATE(),1),
+              ('BOSS','Business Operation Support Services',GETDATE(),1),
+              ('IS','Information Services',GETDATE(),1),
+              ('ITOS','Information Technology Opedration & Support',GETDATE(),1),
+              ('InfrS','Infrastructure Services',GETDATE(),1),
+              ('PS','Presentation Services',GETDATE(),1),
+              ('SRM','Security and Risk Management',GETDATE(),1)
+
+
+INSERT INTO ROADMAP_TMLN(ROADMAP_TMLN_CD,ROADMAP_TMLN_NM,CREAT_DT,CREAT_USER_ID,UPDT_DT,UPDT_USER_ID)
+VALUES('S','Short Term',GETDATE(),1,NULL,NULL),
+         ('M','Mid Term',GETDATE(),1,NULL,NULL),
+         ('L','Long Term',GETDATE(),1,NULL,NULL)
+
+
+INSERT INTO ROADMAP_TMLN_MTRX(VULN_SEV_CD,RMDTN_CST_EFFRT_CD,ROADMAP_TMLN_CD,CREAT_DT,CREAT_USER_ID,UPDT_DT,UPDT_USER_ID)
+VALUES('C','H','M',GETDATE(),1,NULL,NULL),
+         ('C','M','S',GETDATE(),1,NULL,NULL),
+         ('C','L','S',GETDATE(),1,NULL,NULL),
+         ('H','H','M',GETDATE(),1,NULL,NULL),
+         ('H','M','S',GETDATE(),1,NULL,NULL),
+         ('H','L','S',GETDATE(),1,NULL,NULL),
+         ('M','H','L',GETDATE(),1,NULL,NULL),
+         ('M','M','M',GETDATE(),1,NULL,NULL),
+         ('M','L','S',GETDATE(),1,NULL,NULL),
+         ('L','H','L',GETDATE(),1,NULL,NULL),
+         ('L','M','M',GETDATE(),1,NULL,NULL),
+         ('L','L','S',GETDATE(),1,NULL,NULL)
+
+
+GO
+ALTER PROCEDURE [dbo].[REPORT_PRIORITYMATRIX]
+(
+       @CLNT_ENGMT_CD             VARCHAR(30),  
+       @SECUR_SRVC_CD             VARCHAR(150),
+	   @schema					  VARCHAR(50)  
+  
+)
+AS
+BEGIN
+
+BEGIN TRY
+SET NOCOUNT ON
+DECLARE @Query VARCHAR(max)
+
+	SET		 @Query ='
+    SELECT   DISTINCT CLNT_ENGMT_CD,CLNT_VULN_INSTC_KEY,SECUR_OBJ_CD,Quadrant,SECUR_OBJ_NM
+	FROM (
+    SELECT   A.CLNT_ENGMT_CD,A.CLNT_VULN_INSTC_KEY,E.SECUR_OBJ_CD,E.SECUR_CTL_CD,E.SECUR_CTL_NM,''Quadrant1'' Quadrant,E.SECUR_OBJ_NM
+    FROM     '+ @schema+'.CLNT_VULN_INSTC		  A
+	JOIN	 VULN_IMP				  B
+	ON		 A.VULN_IMP_CD			= B.VULN_IMP_CD
+	JOIN	 RMDTN_CST_EFFRT		  C
+	ON		 A.RMDTN_CST_EFFRT_CD	= C.RMDTN_CST_EFFRT_CD
+	LEFT JOIN '+ @schema+'.CLNT_VULN_SECUR_CTL	  D
+	ON		 A.CLNT_VULN_INSTC_KEY	= D.CLNT_VULN_INSTC_KEY
+	AND		 D.ROW_STS_KEY			= 1
+	LEFT JOIN SECUR_CTL				  E
+	ON		 D.REG_CMPLN_CD			= E.REG_CMPLN_CD
+	AND		 D.SECUR_CTL_CD			= E.SECUR_CTL_CD
+	AND		 D.REG_CMPLN_VER		= E.REG_CMPLN_VER
+	AND		 E.REG_CMPLN_CD			= ''HITRUST''
+	WHERE    CLNT_ENGMT_CD			= '''+@CLNT_ENGMT_CD+'''
+--	AND		 SECUR_SRVC_CD			= CASE WHEN '''+@SECUR_SRVC_CD+'''='''' THEN SECUR_SRVC_CD ELSE '''+@SECUR_SRVC_CD+''' END
+	AND		 VULN_INSTC_STS_CD		NOT IN(''D'',''FP'')
+	AND		 VULN_SEV_CD			NOT IN(''I'')
+	AND		 B.VULN_IMP_CD			IN(''C'',''MJ'') 
+	AND		 C.RMDTN_CST_EFFRT_CD = ''L''
+	AND		 A.ROW_STS_KEY		  = 1
+--	GROUP BY A.CLNT_ENGMT_CD,E.SECUR_OBJ_CD,E.SECUR_CTL_CD,E.SECUR_CTL_NM,E.SECUR_OBJ_NM
+	UNION
+	SELECT   A.CLNT_ENGMT_CD,A.CLNT_VULN_INSTC_KEY, E.SECUR_OBJ_CD,E.SECUR_CTL_CD,E.SECUR_CTL_NM,''Quadrant2'' Quadrant, E.SECUR_OBJ_NM
+    FROM     '+ @schema+'.CLNT_VULN_INSTC		  A
+	JOIN	 VULN_IMP				  B
+	ON		 A.VULN_IMP_CD			= B.VULN_IMP_CD
+	JOIN	 RMDTN_CST_EFFRT		  C
+	ON		 A.RMDTN_CST_EFFRT_CD	= C.RMDTN_CST_EFFRT_CD
+	LEFT JOIN '+ @schema+'.CLNT_VULN_SECUR_CTL	  D
+	ON		 A.CLNT_VULN_INSTC_KEY	= D.CLNT_VULN_INSTC_KEY
+	AND		 D.ROW_STS_KEY			= 1
+	LEFT JOIN SECUR_CTL				  E
+	ON		 D.REG_CMPLN_CD			= E.REG_CMPLN_CD
+	AND		 D.SECUR_CTL_CD			= E.SECUR_CTL_CD
+	AND		 D.REG_CMPLN_VER		= E.REG_CMPLN_VER
+	AND		 E.REG_CMPLN_CD			= ''HITRUST''
+	WHERE    CLNT_ENGMT_CD			= '''+@CLNT_ENGMT_CD+'''
+--	AND		 SECUR_SRVC_CD			= CASE WHEN '''+@SECUR_SRVC_CD+'''='''' THEN SECUR_SRVC_CD ELSE '''+@SECUR_SRVC_CD+''' END
+	AND		 VULN_INSTC_STS_CD		NOT IN(''D'',''FP'')
+	AND		 VULN_SEV_CD			NOT IN(''I'')
+	AND		 B.VULN_IMP_CD			IN(''C'',''MJ'') 
+	AND		 C.RMDTN_CST_EFFRT_CD IN(''H'',''M'')
+	AND		 A.ROW_STS_KEY		  = 1
+--	GROUP BY A.CLNT_ENGMT_CD,E.SECUR_OBJ_CD,E.SECUR_CTL_CD,E.SECUR_CTL_NM,E.SECUR_OBJ_NM
+	UNION
+	SELECT   A.CLNT_ENGMT_CD,A.CLNT_VULN_INSTC_KEY,E.SECUR_OBJ_CD,E.SECUR_CTL_CD,E.SECUR_CTL_NM,''Quadrant3'' Quadrant, E.SECUR_OBJ_NM
+    FROM     '+ @schema+'.CLNT_VULN_INSTC		  A
+	JOIN	 VULN_IMP				  B
+	ON		 A.VULN_IMP_CD			= B.VULN_IMP_CD
+	JOIN	 RMDTN_CST_EFFRT		  C
+	ON		 A.RMDTN_CST_EFFRT_CD	= C.RMDTN_CST_EFFRT_CD
+	LEFT JOIN '+ @schema+'.CLNT_VULN_SECUR_CTL	  D
+	ON		 A.CLNT_VULN_INSTC_KEY	= D.CLNT_VULN_INSTC_KEY
+	AND		 D.ROW_STS_KEY			= 1
+	LEFT JOIN SECUR_CTL				  E
+	ON		 D.REG_CMPLN_CD			= E.REG_CMPLN_CD
+	AND		 D.SECUR_CTL_CD			= E.SECUR_CTL_CD
+	AND		 D.REG_CMPLN_VER		= E.REG_CMPLN_VER
+	AND		 E.REG_CMPLN_CD			= ''HITRUST''
+	WHERE    CLNT_ENGMT_CD			= '''+@CLNT_ENGMT_CD+'''
+--	AND		 SECUR_SRVC_CD			= CASE WHEN '''+@SECUR_SRVC_CD+'''='''' THEN SECUR_SRVC_CD ELSE '''+@SECUR_SRVC_CD+''' END
+	AND		 VULN_INSTC_STS_CD		NOT IN(''D'',''FP'')
+	AND		 VULN_SEV_CD			NOT IN(''I'')
+	AND		 B.VULN_IMP_CD			IN(''I'',''MI'',''IF'',''MO'') 
+	AND		 C.RMDTN_CST_EFFRT_CD	= ''L''
+	AND		 A.ROW_STS_KEY		  = 1
+--	GROUP BY A.CLNT_ENGMT_CD,E.SECUR_OBJ_CD,E.SECUR_CTL_CD,E.SECUR_CTL_NM,E.SECUR_OBJ_NM
+	UNION
+	SELECT   A.CLNT_ENGMT_CD,A.CLNT_VULN_INSTC_KEY,E.SECUR_OBJ_CD,E.SECUR_CTL_CD,E.SECUR_CTL_NM,''Quadrant4'' Quadrant, E.SECUR_OBJ_NM
+    FROM     '+ @schema+'.CLNT_VULN_INSTC		  A
+	JOIN	 VULN_IMP				  B
+	ON		 A.VULN_IMP_CD			= B.VULN_IMP_CD
+	JOIN	 RMDTN_CST_EFFRT		  C
+	ON		 A.RMDTN_CST_EFFRT_CD	= C.RMDTN_CST_EFFRT_CD
+	LEFT JOIN '+ @schema+'.CLNT_VULN_SECUR_CTL	  D
+	ON		 A.CLNT_VULN_INSTC_KEY	= D.CLNT_VULN_INSTC_KEY
+	AND		 D.ROW_STS_KEY			= 1
+	LEFT JOIN SECUR_CTL				  E
+	ON		 D.REG_CMPLN_CD			= E.REG_CMPLN_CD
+	AND		 D.SECUR_CTL_CD			= E.SECUR_CTL_CD
+	AND		 D.REG_CMPLN_VER		= E.REG_CMPLN_VER
+	AND		 E.REG_CMPLN_CD			= ''HITRUST''
+	WHERE    CLNT_ENGMT_CD			= '''+@CLNT_ENGMT_CD+'''
+--	AND		 SECUR_SRVC_CD			= CASE WHEN '''+@SECUR_SRVC_CD+ '='''' THEN SECUR_SRVC_CD ELSE '''+@SECUR_SRVC_CD+''' END
+	AND		 VULN_INSTC_STS_CD		NOT IN(''D'',''FP'')
+	AND		 VULN_SEV_CD			NOT IN(''I'')
+	AND		 B.VULN_IMP_CD IN(''I'',''MI'',''IF'',''MO'') 
+	AND		 C.RMDTN_CST_EFFRT_CD IN(''H'',''M'')
+	AND		 A.ROW_STS_KEY		  = 1
+--	GROUP BY A.CLNT_ENGMT_CD,E.SECUR_OBJ_CD,E.SECUR_CTL_CD,E.SECUR_CTL_NM, E.SECUR_OBJ_NM
+)Z
+	ORDER BY Quadrant '
+EXECUTE (@Query)
+--PRINT @Query
+
+END TRY
+
+BEGIN CATCH
+
+    DECLARE @ErrorNumber INT = ERROR_NUMBER();
+    DECLARE @ErrorLine INT = ERROR_LINE();
+    DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+    DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+    DECLARE @ErrorState INT = ERROR_STATE();
+
+    PRINT 'Actual error number: ' + CAST(@ErrorNumber AS VARCHAR(10));
+    PRINT 'Actual line number: ' + CAST(@ErrorLine AS VARCHAR(10));
+
+    RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
+  END CATCH
+-- COMMIT TRANSACTION
+END
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[RoadMap_INS_CLNT_ROADMAP_FACT]    Script Date: 2/7/2017 2:39:07 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[RoadMap_INS_CLNT_ROADMAP_FACT]
+(
+ 
+	@ROW_STS_KEY		INTEGER,
+	@ORG_KEY			INTEGER,
+	@CLNT_ENGMT_CD		VARCHAR(30),
+	@CSA_DOM_CD			VARCHAR(10),
+	@VULN_CATGY_CD		VARCHAR(10),
+	@VULN_SEV_CD		VARCHAR(3),
+	@RMDTN_CST_EFFRT_CD	VARCHAR(3),
+	@ROADMAP_TMLN_CD	CHAR(1),
+	@ROADMAP_EFF_DT		DATETIME,
+	@ROADMAP_PUBL_DT	DATETIME,
+	@VULN_CNT			INTEGER,
+	@ROADMAP_COMM		VARCHAR(5000),
+	@CREAT_USER_ID		INTEGER,
+	@Flag               VARCHAR(1),  
+	@schema             VARCHAR(50)   
+	
+)
+
+ AS  
+ BEGIN  
+  BEGIN TRY  
+  SET NOCOUNT ON  
+  DECLARE @Query VARCHAR(max)
+
+	IF @Flag = 'I'
+	BEGIN
+
+		SET   @Query =	'INSERT '+ @schema+'.CLNT_ROADMAP_FACT (ROW_STS_KEY,ORG_KEY,CLNT_ENGMT_CD,CSA_DOM_CD,VULN_CATGY_CD,VULN_SEV_CD,RMDTN_CST_EFFRT_CD,
+						ROADMAP_TMLN_CD,ROADMAP_EFF_DT,ROADMAP_PUBL_DT,VULN_CNT,ROADMAP_COMMT,CREAT_DT,CREAT_USER_ID) 
+						VALUES
+
+						('+ CONVERT(VARCHAR,@ROW_STS_KEY) +',
+						'+ CONVERT(VARCHAR,@ORG_KEY) +',
+						'''+ CONVERT(VARCHAR,@CLNT_ENGMT_CD) +''',
+						'''+ CONVERT(VARCHAR,@CSA_DOM_CD) +''',
+						'''+ CONVERT(VARCHAR,@VULN_CATGY_CD) +''',
+						'''+ CONVERT(VARCHAR,@VULN_SEV_CD) +''',
+						'''+ CONVERT(VARCHAR,@RMDTN_CST_EFFRT_CD) +''',
+						'''+ CONVERT(VARCHAR,@ROADMAP_TMLN_CD) +''',
+						'+ isnull(''''+ CONVERT(VARCHAR,@ROADMAP_EFF_DT) +'''','null') + ',
+						'+ isnull(''''+ CONVERT(VARCHAR,@ROADMAP_PUBL_DT) +'''','null') + ',
+						'+ CONVERT(VARCHAR,@VULN_CNT) +',
+						'+ isnull('''' + convert(varchar,@ROADMAP_COMM) + '''','null') + ',
+						'+'GETDATE()'+',
+						'+ CONVERT(VARCHAR,@CREAT_USER_ID)+'); SELECT @@IDENTITY'
+
+						
+	-- print @query
+
+	DECLARE @Result AS Table (RetValue int)
+	INSERT INTO @Result EXECUTE (@Query)
+	SELECT RetValue FROM @Result
+
+	
+
+
+	END
+
+	IF @Flag = 'U'
+	BEGIN
+		SET @Query = 'UPDATE '+ @schema+'.CLNT_ROADMAP_FACT	
+					 SET	
+							RMDTN_CST_EFFRT_CD	=	'''+ CONVERT(VARCHAR,@RMDTN_CST_EFFRT_CD) +''',
+							ROADMAP_TMLN_CD		=	'''+ CONVERT(VARCHAR,@ROADMAP_TMLN_CD) +''',
+							ROADMAP_COMMT		=	'''+ CONVERT(VARCHAR,@ROADMAP_COMM) +''',
+							UPDT_DT				=	'+'GETDATE()'+',
+							UPDT_USER_ID		=	'+ CONVERT(VARCHAR,@CREAT_USER_ID) +'
+							WHERE CLNT_ENGMT_CD		=	'''+ CONVERT(VARCHAR,@CLNT_ENGMT_CD) +''' 
+							AND VULN_CATGY_CD = '+ CONVERT(VARCHAR,@VULN_CATGY_CD) +'
+							SELECT @@ROWCOUNT '
+							
+
+						
+	 --print @query
+
+	DECLARE @Result1 AS Table (RetValue int)
+	INSERT INTO @Result1 EXECUTE (@Query)
+	SELECT RetValue FROM @Result1
+
+	END
+
+	IF @Flag = 'D'
+	BEGIN
+		
+		SET @Query = 'DELETE  FROM '+ @schema+'.CLNT_ROADMAP_FACT	
+					  WHERE CLNT_ENGMT_CD		=	'''+ CONVERT(VARCHAR,@CLNT_ENGMT_CD) +''' 
+					  SELECT @@ROWCOUNT '
+							
+
+						
+	 --print @query
+
+	DECLARE @Result2 AS Table (RetValue int)
+	INSERT INTO @Result2 EXECUTE (@Query)
+	SELECT RetValue FROM @Result2
+
+	END
+
+  END TRY  
+  
+  BEGIN CATCH  
+
+
+   DECLARE @ErrorNumber INT = ERROR_NUMBER();  
+   DECLARE @ErrorLine INT = ERROR_LINE();  
+   DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();  
+   DECLARE @ErrorSeverity INT = ERROR_SEVERITY();  
+   DECLARE @ErrorState INT = ERROR_STATE();  
+  
+   PRINT 'Actual error number: ' + CAST(@ErrorNumber AS VARCHAR(10));  
+   PRINT 'Actual line number: ' + CAST(@ErrorLine AS VARCHAR(10));  
+  
+   RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);  
+    END CATCH  
+    
+ END
+
+ 
+GO
+/****** Object:  StoredProcedure [dbo].[RoadMap_VulnerabilityCategory]    Script Date: 2/7/2017 11:05:23 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE  [dbo].[RoadMap_VulnerabilityCategory]
+(
+	
+	@CLNT_ENGMT_CD		 VARCHAR(100),
+	@Schema				 VARCHAR(50)
+)
+AS
+BEGIN
+
+BEGIN TRY
+SET NOCOUNT ON
+DECLARE @Query VARCHAR(MAX)
+
+SET @Query='
+IF OBJECT_ID(''dbo.#1'', ''U'') IS NOT NULL 
+  DROP TABLE dbo.#1; 
+
+SELECT	 A.VULN_CATGY_CD,A.CLNT_ENGMT_CD,COUNT(DISTINCT A.CLNT_VULN_INSTC_KEY)FindingCount,
+		 SUM(A.VULN_OVALL_SCOR)/COUNT(DISTINCT A.CLNT_VULN_INSTC_KEY)SEVAVG INTO dbo.#1
+FROM	 '+ @schema+'.CLNT_VULN_INSTC		    A
+JOIN	 VULN_CATGY					B
+ON		 A.VULN_CATGY_CD		=	B.VULN_CATGY_CD
+WHERE	 A.CLNT_ENGMT_CD		=	'''+@CLNT_ENGMT_CD +'''
+AND		 A.VULN_INSTC_STS_CD	=	''V''
+AND		 A.VULN_SEV_CD			NOT IN(''I'')
+GROUP BY A.VULN_CATGY_CD,A.CLNT_ENGMT_CD
+
+
+
+IF OBJECT_ID(''dbo.#2'', ''U'') IS NOT NULL 
+  DROP TABLE dbo.#2; 
+
+SELECT  VULN_CATGY_CD,SUM(SEVSQRT)SEVSUM INTO dbo.#2 FROM(
+SELECT  A.VULN_CATGY_CD ,
+		(CONVERT(NUMERIC,ISNULL(B.SEVAVG,0)) -CONVERT(NUMERIC,ISNULL(VULN_OVALL_SCOR,0)))*
+		(CONVERT(NUMERIC,ISNULL(B.SEVAVG,0)) -CONVERT(NUMERIC,ISNULL(VULN_OVALL_SCOR,0)))SEVSQRT
+
+FROM	'+ @schema+'.CLNT_VULN_INSTC			A
+JOIN	dbo.#1							B
+ON		A.VULN_CATGY_CD			=		B.VULN_CATGY_CD
+WHERE	A.CLNT_ENGMT_CD			=		'''+@CLNT_ENGMT_CD +'''
+AND		 A.VULN_INSTC_STS_CD	=	''V''
+AND		 A.VULN_SEV_CD			NOT IN(''I'')
+)Z
+GROUP BY VULN_CATGY_CD
+
+
+
+IF OBJECT_ID(''dbo.#3'', ''U'') IS NOT NULL 
+ DROP TABLE dbo.#3;
+
+SELECT	 A.VULN_CATGY_CD,A.CLNT_ENGMT_CD,MAX(VULN_OVALL_SCOR)OVERALLMax,
+		 SUM(C.RMDTN_CST_EFFRT_ORDR_NBR)/COUNT(DISTINCT A.CLNT_VULN_INSTC_KEY)CST INTO dbo.#3
+FROM	 '+ @schema+'.CLNT_VULN_INSTC			A
+JOIN	 VULN_CATGY						B
+ON		 A.VULN_CATGY_CD			=	B.VULN_CATGY_CD
+JOIN	 RMDTN_CST_EFFRT				C
+ON		 A.RMDTN_CST_EFFRT_CD		=	C.RMDTN_CST_EFFRT_CD
+WHERE	 A.CLNT_ENGMT_CD			=	'''+@CLNT_ENGMT_CD +'''
+AND		 A.VULN_INSTC_STS_CD		=	''V''
+AND		 A.VULN_SEV_CD					NOT IN(''I'')
+GROUP BY A.VULN_CATGY_CD,A.CLNT_ENGMT_CD
+
+
+IF OBJECT_ID(''dbo.#4'', ''U'') IS NOT NULL 
+ DROP TABLE dbo.#4;
+SELECT	 A.CLNT_ENGMT_CD,A.VULN_CATGY_CD,COUNT(DISTINCT A.CLNT_VULN_INSTC_KEY)VULCOUNT,D.CLNT_PUBL_DT,
+		 (C.OVERALLMax -(SQRT(B.SEVSUM/COUNT(DISTINCT A.CLNT_VULN_INSTC_KEY))))SEV,C.CST INTO Dbo.#4
+FROM	 '+ @schema+'.CLNT_VULN_INSTC	A
+JOIN	 #2						B
+ON		 A.VULN_CATGY_CD	=	B.VULN_CATGY_CD
+JOIN	 #3						C
+ON		 A.VULN_CATGY_CD	=	C.VULN_CATGY_CD
+AND		 C.VULN_CATGY_CD	=	B.VULN_CATGY_CD
+JOIN	 CLNT_ENGMT				D
+ON		 A.CLNT_ENGMT_CD	=	D.CLNT_ENGMT_CD
+AND		 A.VULN_INSTC_STS_CD		=	''V''
+AND		 A.VULN_SEV_CD					NOT IN(''I'')
+WHERE	 A.CLNT_ENGMT_CD			=	'''+@CLNT_ENGMT_CD +'''
+GROUP BY A.VULN_CATGY_CD,B.SEVSUM,C.CST,C.OVERALLMax,D.CLNT_PUBL_DT,A.CLNT_ENGMT_CD
+
+
+		SELECT  DISTINCT E.CSA_DOM_CD,E.VULN_CATGY_NM,E.VULN_CATGY_CD,A.VULN_SEV_CD,VULN_SEV_NM,D.RMDTN_CST_EFFRT_CD,
+				D.RMDTN_CST_EFFRT_NM,F.ROADMAP_TMLN_CD,G.ROADMAP_TMLN_NM,B.VULCOUNT,
+				CASE WHEN ISNULL(H.ROADMAP_EFF_DT,'''')='''' THEN GETDATE() ELSE H.ROADMAP_EFF_DT END EffectiveDate,
+				B.CLNT_PUBL_DT,B.CLNT_ENGMT_CD,H.UPDT_DT,H.UPDT_USER_ID
+		FROM	VULN_SEV				A
+		JOIN	dbo.#4					B
+		ON		(B.SEV	 >= OVALL_SCOR_MIN AND B.SEV	 <= OVALL_SCOR_MAX)
+		JOIN	dbo.#4					C
+		ON		B.VULN_CATGY_CD		=	C.VULN_CATGY_CD
+		JOIN	RMDTN_CST_EFFRT			D
+		ON		C.CST				=	D.RMDTN_CST_EFFRT_ORDR_NBR
+		JOIN	VULN_CATGY				E
+		ON		B.VULN_CATGY_CD		=	E.VULN_CATGY_CD
+		JOIN	ROADMAP_TMLN_MTRX		F
+		ON		D.RMDTN_CST_EFFRT_CD=	F.RMDTN_CST_EFFRT_CD
+		AND		A.VULN_SEV_CD		=	F.VULN_SEV_CD
+		JOIN	ROADMAP_TMLN			G
+		ON		F.ROADMAP_TMLN_CD	=	G.ROADMAP_TMLN_CD
+		LEFT JOIN '+ @schema+'.CLNT_ROADMAP_FACT	H
+		ON		E.VULN_CATGY_CD		=   H.VULN_CATGY_CD
+		AND		B.CLNT_ENGMT_CD		=	H.CLNT_ENGMT_CD
+		'
+EXECUTE(@Query)
+--PRINT(@Query)
+
+
+END TRY
+
+BEGIN CATCH
+
+    DECLARE @ErrorNumber INT = ERROR_NUMBER();
+    DECLARE @ErrorLine INT = ERROR_LINE();
+    DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+    DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+    DECLARE @ErrorState INT = ERROR_STATE();
+
+    PRINT 'Actual error number: ' + CAST(@ErrorNumber AS VARCHAR(10));
+    PRINT 'Actual line number: ' + CAST(@ErrorLine AS VARCHAR(10));
+
+    RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
+  END CATCH
+-- COMMIT TRANSACTION
+END
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[RoadMap_CategoryByEngmtCD]    Script Date: 2/3/2017 4:34:03 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE  [dbo].[RoadMap_CategoryByEngmtCD]
+(
+       
+       @CLNT_ENGMT_CD             VARCHAR(100),
+       @Schema                           VARCHAR(50),
+       @CSA_DOM_CD                VARCHAR(10),
+       @VULN_CATGY_CD             VARCHAR(10)
+)
+AS
+BEGIN
+
+BEGIN TRY
+SET NOCOUNT ON
+DECLARE @Query VARCHAR(MAX)
+
+SET @Query=' SELECT A.*,F.CSA_DOM_NM,B.VULN_CATGY_NM,C.VULN_SEV_NM,D.RMDTN_CST_EFFRT_NM,E.ROADMAP_TMLN_NM
+                     FROM		'+ @schema+'.CLNT_ROADMAP_FACT    A
+                     JOIN		VULN_CATGY             B
+                     ON         A.VULN_CATGY_CD      = B.VULN_CATGY_CD
+                     JOIN		VULN_SEV               C
+                     ON         A.VULN_SEV_CD		 = C.VULN_SEV_CD
+                     JOIN		RMDTN_CST_EFFRT        D      
+                     ON         A.RMDTN_CST_EFFRT_CD = D.RMDTN_CST_EFFRT_CD
+                     JOIN		ROADMAP_TMLN           E
+                     ON         A.ROADMAP_TMLN_CD    = E.ROADMAP_TMLN_CD
+                     JOIN		CSA_REF_ARCH_DOM       F
+                     ON         A.CSA_DOM_CD         = F.CSA_DOM_CD
+                     WHERE		A.CLNT_ENGMT_CD      = '''+@CLNT_ENGMT_CD +'''
+                     AND		ISNULL(A.CSA_DOM_CD,'''') =  CASE WHEN ''' + CONVERT(VARCHAR,@CSA_DOM_CD) +''' = ''''  THEN  ISNULL(A.CSA_DOM_CD,'''') ELSE ''' + CONVERT(VARCHAR,@CSA_DOM_CD) +'''  END
+                     AND		ISNULL(A.VULN_CATGY_CD,'''') =  CASE WHEN ''' + CONVERT(VARCHAR,@VULN_CATGY_CD) +''' = ''''  THEN  ISNULL(A.VULN_CATGY_CD,'''') ELSE ''' + CONVERT(VARCHAR,@VULN_CATGY_CD) +'''  END   '
+
+EXECUTE(@Query)
+-- PRINT(@Query)
+
+
+END TRY
+
+BEGIN CATCH                       
+
+    DECLARE @ErrorNumber INT = ERROR_NUMBER();
+    DECLARE @ErrorLine INT = ERROR_LINE();
+    DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+    DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+    DECLARE @ErrorState INT = ERROR_STATE();
+
+    PRINT 'Actual error number: ' + CAST(@ErrorNumber AS VARCHAR(10));
+    PRINT 'Actual line number: ' + CAST(@ErrorLine AS VARCHAR(10));
+
+    RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
+  END CATCH
+-- COMMIT TRANSACTION
+END
+
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[CreateSchemaTables]    Script Date: 2/2/2017 12:08:35 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[CreateSchemaTables]
+(
+@SchemaName VARCHAR(50),
+@ORG_KEY     INTEGER
+)
+AS
+BEGIN
+BEGIN TRY
+SET NOCOUNT ON
+
+DECLARE @Query1 VARCHAR(max)
+DECLARE @Query2 VARCHAR(max)
+DECLARE @Query3 VARCHAR(max)
+
+SET @Query1= '
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '''+ @SchemaName+'''  AND TABLE_NAME =''CLNT_VULN_INSTC'')
+BEGIN
+CREATE TABLE '+ @SchemaName+ '.CLNT_VULN_INSTC 
+(
+       [CLNT_VULN_INSTC_KEY] [int] IDENTITY(1,1) NOT NULL,
+       [ROW_STS_KEY] [int] NOT NULL,
+       [ORG_KEY] [int] NOT NULL,
+       [CLNT_ENGMT_CD] [varchar](30) NOT NULL,
+       [SECUR_SRVC_CD] [varchar](10) NOT NULL,
+       [VULN_SRC_KEY] [int] NOT NULL,
+       [VULN_INSTC_STS_CD] [varchar](3) NOT NULL,
+       [VULN_SEV_CD] [varchar](3) NULL,
+       [VULN_IMP_CD] [varchar](3) NULL,
+       [RISK_PRBL_CD] [varchar](3) NULL,
+       [RMDTN_CST_EFFRT_CD] [varchar](3) NULL,
+       [VULN_CATGY_CD] [varchar](10) NULL,
+       [OWASP_TOP_10_KEY] [int] NULL,
+       [CVE_ID] [varchar](25) NULL,
+       [OS_KEY] [int] NULL,
+       [SRC_VULN_SCAN_ID] [varchar](150) NULL,
+       [SRC_VULN_SCAN_STRT_DT] [datetime] NULL,
+       [SRC_VULN_SCAN_END_DT] [datetime] NULL,
+       [SRC_VULN_INSTC_ID] [varchar](150) NULL,
+       [SRC_VULN_ID] [varchar](150) NULL,
+       [VULN_NM] [varchar](255) NOT NULL,
+       [VULN_DESC] [text] NULL,
+       [VULN_CREAT_DT] [datetime] NOT NULL,
+       [IPADR] [varchar](39) NULL,
+       [PORT_NBR] [int] NULL,
+       [SRC_ADVS_TXT] [varchar](1024) NULL,
+       [SRC_VULN_BAS_SCOR] [decimal](10, 2) NULL,
+       [VULN_BAS_SCOR] [decimal](10, 2) NULL,
+       [VULN_IMP_SUB_SCOR] [decimal](10, 2) NULL,
+       [VULN_EXPLT_SUB_SCOR] [decimal](10, 2) NULL,
+       [VULN_TMPRL_SCOR] [decimal](10, 2) NULL,
+       [VULN_ENV_SCOR] [decimal](10, 2) NULL,
+       [VULN_OVALL_SCOR] [decimal](10, 2) NULL,
+       [VULN_VCTR_TXT] [varchar](100) NULL,
+       [NTWK_NM] [varchar](150) NULL,
+       [PRTCL_NM] [varchar](255) NULL,
+       [HST_NM] [varchar](150) NULL,
+       [DOM_NM] [varchar](150) NULL,
+       [SFTW_NM] [varchar](150) NULL,
+       [APPL_URL] [nvarchar](2000) NULL,
+       [NETBIOS_NM] [varchar](150) NULL,
+       [MAC_ADR_NM] [varchar](150) NULL,
+       [VULN_TECH_COMMT_TXT] [text] NULL,
+       [VULN_IMP_COMMT_TXT] [text] NULL,
+       [RECOM_COMMT_TXT] [text] NULL,
+       [ROOT_CAUS_COMMT_TXT] [text] NULL,
+       [APPL_FL_UPLOAD_LOG_KEY] [int] NULL,
+       [CREAT_DT] [datetime] NOT NULL,
+       [CREAT_USER_ID] [int] NOT NULL,
+       [UPDT_DT] [datetime] NULL,
+       [UPDT_USER_ID] [int] NULL,
+CONSTRAINT [PK_CLNT_VULN_INSTC] PRIMARY KEY CLUSTERED 
+(
+       [CLNT_VULN_INSTC_KEY] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY] 
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_VULN_INSTC]  WITH CHECK ADD FOREIGN KEY([APPL_FL_UPLOAD_LOG_KEY])
+REFERENCES [dbo].[APPL_FL_UPLOAD_LOG] ([APPL_FL_UPLOAD_LOG_KEY])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_VULN_INSTC]  WITH CHECK ADD FOREIGN KEY([CVE_ID])
+REFERENCES [dbo].[CVE] ([CVE_ID])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_VULN_INSTC]  WITH CHECK ADD FOREIGN KEY([ORG_KEY])
+REFERENCES [dbo].[ORG] ([ORG_KEY])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_VULN_INSTC]  WITH CHECK ADD FOREIGN KEY([OS_KEY])
+REFERENCES [dbo].[OS] ([OS_KEY])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_VULN_INSTC]  WITH CHECK ADD FOREIGN KEY([RISK_PRBL_CD])
+REFERENCES [dbo].[RISK_PRBL] ([RISK_PRBL_CD])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_VULN_INSTC]  WITH CHECK ADD FOREIGN KEY([RMDTN_CST_EFFRT_CD])
+REFERENCES [dbo].[RMDTN_CST_EFFRT] ([RMDTN_CST_EFFRT_CD])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_VULN_INSTC]  WITH CHECK ADD FOREIGN KEY([VULN_CATGY_CD])
+REFERENCES [dbo].[VULN_CATGY] ([VULN_CATGY_CD])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_VULN_INSTC]  WITH CHECK ADD FOREIGN KEY([ROW_STS_KEY])
+REFERENCES [dbo].[MSTR_LKP] ([MSTR_LKP_KEY])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_VULN_INSTC]  WITH CHECK ADD FOREIGN KEY([VULN_IMP_CD])
+REFERENCES [dbo].[VULN_IMP] ([VULN_IMP_CD])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_VULN_INSTC]  WITH CHECK ADD FOREIGN KEY([VULN_INSTC_STS_CD])
+REFERENCES [dbo].[VULN_INSTC_STS] ([VULN_INSTC_STS_CD])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_VULN_INSTC]  WITH CHECK ADD FOREIGN KEY([VULN_SEV_CD])
+REFERENCES [dbo].[VULN_SEV] ([VULN_SEV_CD])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_VULN_INSTC]  WITH CHECK ADD FOREIGN KEY([VULN_SRC_KEY])
+REFERENCES [dbo].[MSTR_LKP] ([MSTR_LKP_KEY])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_VULN_INSTC]  WITH CHECK ADD FOREIGN KEY([CLNT_ENGMT_CD], [SECUR_SRVC_CD])
+REFERENCES [dbo].[CLNT_SECUR_SRVC_ENGMT] ([CLNT_ENGMT_CD], [SECUR_SRVC_CD])  
+END
+ELSE
+BEGIN
+SELECT -1 Retval
+END 
+'
+
+
+--  PRINT  (@query1)
+EXECUTE (@Query1)
+
+SET @Query2= '
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '''+ @SchemaName+'''  AND TABLE_NAME =''CLNT_VULN_SECUR_CTL'')
+BEGIN
+CREATE TABLE '+ @SchemaName+ '.[CLNT_VULN_SECUR_CTL](
+       [CLNT_VULN_INSTC_KEY] [int] NOT NULL,
+       [REG_CMPLN_CD] [varchar](20) NOT NULL,
+       [REG_CMPLN_VER] [varchar](20) NOT NULL,
+       [SECUR_CTL_CD] [varchar](20) NOT NULL,
+       [ROW_STS_KEY] [int] NOT NULL,
+       [CREAT_DT] [datetime] NULL,
+       [CREAT_USER_ID] [int] NULL,
+       [UPDT_DT] [datetime] NULL,
+       [UPDT_USER_ID] [int] NULL,
+CONSTRAINT [PK_CLNT_VULN_SECUR_CTL] PRIMARY KEY CLUSTERED 
+(
+       [CLNT_VULN_INSTC_KEY] ASC,
+       [REG_CMPLN_CD] ASC,
+       [REG_CMPLN_VER] ASC,
+       [SECUR_CTL_CD] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_VULN_SECUR_CTL]  WITH CHECK ADD FOREIGN KEY([CLNT_VULN_INSTC_KEY])
+REFERENCES '+ @SchemaName+ '.[CLNT_VULN_INSTC] ([CLNT_VULN_INSTC_KEY])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_VULN_SECUR_CTL]  WITH CHECK ADD FOREIGN KEY([ROW_STS_KEY])
+REFERENCES [dbo].[MSTR_LKP] ([MSTR_LKP_KEY])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_VULN_SECUR_CTL]  WITH CHECK ADD FOREIGN KEY([REG_CMPLN_CD], [REG_CMPLN_VER], [SECUR_CTL_CD])
+REFERENCES [dbo].[SECUR_CTL] ([REG_CMPLN_CD], [REG_CMPLN_VER], [SECUR_CTL_CD]) 
+SELECT 1 Retval
+END
+ELSE
+BEGIN
+SELECT -1 Retval
+END 
+'
+EXECUTE (@Query2)
+
+SET @Query3= '
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '''+ @SchemaName+'''  AND TABLE_NAME =''CLNT_ROADMAP_FACT'')
+BEGIN
+CREATE TABLE '+ @SchemaName+ '.[CLNT_ROADMAP_FACT](
+       [CLNT_ROADMAP_KEY] [int] NOT NULL,
+       [ROW_STS_KEY] [int] NULL,
+       [ORG_KEY] [int] NULL,
+       [CLNT_ENGMT_CD] [varchar](30) NULL,
+       [CSA_DOM_CD] [varchar](10) NOT NULL,
+       [VULN_CATGY_CD] [varchar](10) NOT NULL,
+       [VULN_SEV_CD] [varchar](3) NOT NULL,
+       [RMDTN_CST_EFFRT_CD] [varchar](3) NOT NULL,
+       [ROADMAP_TMLN_CD] [char](1) NOT NULL,
+       [ROADMAP_EFF_DT] [date] NULL,
+       [ROADMAP_PUBL_DT] [date] NULL,
+       [VULN_CNT] [int] NULL,
+       [ROADMAP_COMMT] [varchar](5000) NULL,
+       [CREAT_DT] [datetime] NOT NULL,
+       [CREAT_USER_ID] [int] NOT NULL,
+       [UPDT_DT] [datetime] NULL,
+       [UPDT_USER_ID] [int] NULL,
+CONSTRAINT [PK_CLNT_ROADMAP_FACT] PRIMARY KEY CLUSTERED 
+(
+       [CLNT_ROADMAP_KEY] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_ROADMAP_FACT]  WITH CHECK ADD  CONSTRAINT [FK_CLNT_ENGMT_126] FOREIGN KEY([CLNT_ENGMT_CD])
+REFERENCES [dbo].[CLNT_ENGMT] ([CLNT_ENGMT_CD])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_ROADMAP_FACT] CHECK CONSTRAINT [FK_CLNT_ENGMT_126]
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_ROADMAP_FACT]  WITH CHECK ADD  CONSTRAINT [FK_CSA_REF_ARCH_DOM_141] FOREIGN KEY([CSA_DOM_CD])
+REFERENCES [dbo].[CSA_REF_ARCH_DOM] ([CSA_DOM_CD])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_ROADMAP_FACT] CHECK CONSTRAINT [FK_CSA_REF_ARCH_DOM_141]
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_ROADMAP_FACT]  WITH CHECK ADD  CONSTRAINT [FK_MSTR_LKP_131] FOREIGN KEY([ROW_STS_KEY])
+REFERENCES [dbo].[MSTR_LKP] ([MSTR_LKP_KEY])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_ROADMAP_FACT] CHECK CONSTRAINT [FK_MSTR_LKP_131]
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_ROADMAP_FACT]  WITH CHECK ADD  CONSTRAINT [FK_ORG_125] FOREIGN KEY([ORG_KEY])
+REFERENCES [dbo].[ORG] ([ORG_KEY])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_ROADMAP_FACT] CHECK CONSTRAINT [FK_ORG_125]
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_ROADMAP_FACT]  WITH CHECK ADD  CONSTRAINT [FK_RMDTN_CST_EFFRT_128] FOREIGN KEY([RMDTN_CST_EFFRT_CD])
+REFERENCES [dbo].[RMDTN_CST_EFFRT] ([RMDTN_CST_EFFRT_CD])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_ROADMAP_FACT] CHECK CONSTRAINT [FK_RMDTN_CST_EFFRT_128]
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_ROADMAP_FACT]  WITH CHECK ADD  CONSTRAINT [FK_ROADMAP_TMLN_130] FOREIGN KEY([ROADMAP_TMLN_CD])
+REFERENCES [dbo].[ROADMAP_TMLN] ([ROADMAP_TMLN_CD])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_ROADMAP_FACT] CHECK CONSTRAINT [FK_ROADMAP_TMLN_130]
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_ROADMAP_FACT]  WITH CHECK ADD  CONSTRAINT [FK_VULN_CATGY_129] FOREIGN KEY([VULN_CATGY_CD])
+REFERENCES [dbo].[VULN_CATGY] ([VULN_CATGY_CD])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_ROADMAP_FACT] CHECK CONSTRAINT [FK_VULN_CATGY_129]
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_ROADMAP_FACT]  WITH CHECK ADD  CONSTRAINT [FK_VULN_SEV_127] FOREIGN KEY([VULN_SEV_CD])
+REFERENCES [dbo].[VULN_SEV] ([VULN_SEV_CD])
+
+ALTER TABLE '+ @SchemaName+ '.[CLNT_ROADMAP_FACT] CHECK CONSTRAINT [FK_VULN_SEV_127]
+
+SELECT 1 Retval
+END
+ELSE
+BEGIN
+SELECT -1 Retval
+END 
+'
+EXECUTE (@Query3)
+
+END TRY
+
+BEGIN CATCH
+
+    DECLARE @ErrorNumber INT = ERROR_NUMBER();
+    DECLARE @ErrorLine INT = ERROR_LINE();
+    DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+    DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+    DECLARE @ErrorState INT = ERROR_STATE();
+
+    PRINT 'Actual error number: ' + CAST(@ErrorNumber AS VARCHAR(10));
+    PRINT 'Actual line number: ' + CAST(@ErrorLine AS VARCHAR(10));
+
+    RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
+  END CATCH
+-- COMMIT TRANSACTION
+END;
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[Analyst_ListVulnerability]    Script Date: 2/3/2017 4:08:17 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[Analyst_ListVulnerability]
+(
+       
+       @CLNT_ENGMT_CD             VARCHAR(30),
+       @PageNo                    INTEGER,
+       @RowspPage                 INTEGER,
+       @CLNT_VULN_INSTC_KEY       INTEGER,
+       @VULN_NM                   VARCHAR(255),
+       @SECUR_SRVC_CD             VARCHAR(10),
+       @VULN_SRC                  INTEGER,
+       @IPADR                     VARCHAR(39),
+       @VULN_SEV_CD               VARCHAR(3),
+       @STSKEY                    VARCHAR(3),
+       @SFTW_NM                   VARCHAR(150),
+       @schema                    VARCHAR(50),
+          @VULN_CATGY_CD                   VARCHAR(10)
+)
+AS
+BEGIN
+
+DECLARE @Count INTEGER
+
+BEGIN TRY
+SET NOCOUNT ON
+DECLARE @Query VARCHAR(max)
+DECLARE @Query1 VARCHAR(max)
+DECLARE @Query2 VARCHAR(max)
+
+                BEGIN TRAN
+
+                     SET   @Query = 'SELECT              COUNT(A.CLNT_ENGMT_CD) TotalCount
+                     FROM            '+ @schema+'.CLNT_VULN_INSTC   A             
+                     WHERE           A.ROW_STS_KEY              =   1
+                     AND           A.CLNT_ENGMT_CD                   =   ''' + CONVERT(VARCHAR,@CLNT_ENGMT_CD) +'''
+                     AND           CLNT_VULN_INSTC_KEY =                   CASE WHEN ''' + CONVERT(VARCHAR,@CLNT_VULN_INSTC_KEY) +'''= 0  THEN       CLNT_VULN_INSTC_KEY ELSE  ''' + CONVERT(VARCHAR,@CLNT_VULN_INSTC_KEY) +'''  END
+                     AND           ISNULL(A.VULN_NM,'''') LIKE             CASE WHEN ''' + CONVERT(VARCHAR,@VULN_NM) +'''= ''''               THEN       ISNULL(A.VULN_NM,'''') ELSE ''' + '%' + CONVERT(VARCHAR,@VULN_NM) +'%' +''' END      
+                     AND           ISNULL(A.SECUR_SRVC_CD,'''') =          CASE WHEN ''' + CONVERT(VARCHAR,@SECUR_SRVC_CD) +''' = ''''    THEN       ISNULL(A.SECUR_SRVC_CD,'''') ELSE ''' + CONVERT(VARCHAR,@SECUR_SRVC_CD) +'''  END   
+                     AND           ISNULL(A.VULN_SRC_KEY,0)   =            CASE WHEN ''' + CONVERT(VARCHAR,@VULN_SRC) +'''= 0                 THEN       ISNULL(A.VULN_SRC_KEY,0) ELSE ''' + CONVERT(VARCHAR,@VULN_SRC) +''' END     
+                     AND           ISNULL(A.IPADR,'''') LIKE               CASE WHEN ''' + CONVERT(VARCHAR,@IPADR) +''' = ''''                THEN       ISNULL(A.IPADR,'''') ELSE ''' + '%' + CONVERT(VARCHAR,@IPADR) +'%' +''' END
+                     AND           ISNULL(A.VULN_SEV_CD,'''') =            CASE WHEN ''' + CONVERT(VARCHAR,@VULN_SEV_CD) +''' = ''''          THEN       ISNULL(A.VULN_SEV_CD,'''') ELSE ''' + CONVERT(VARCHAR,@VULN_SEV_CD) +'''  END
+                     AND           ISNULL(A.VULN_INSTC_STS_CD,'''') = CASE WHEN ''' + CONVERT(VARCHAR,@STSKEY) +'''= ''''                THEN       ISNULL(A.VULN_INSTC_STS_CD,'''') ELSE ''' + CONVERT(VARCHAR,@STSKEY) +'''  END
+                     AND           ISNULL(A.SFTW_NM,'''') LIKE             CASE WHEN ''' + CONVERT(VARCHAR,@SFTW_NM) +'''= ''''               THEN       ISNULL(A.SFTW_NM,'''') ELSE ''' + '%' + CONVERT(VARCHAR,@SFTW_NM) +'%' +''' END
+                                  AND           ISNULL(A.VULN_CATGY_CD,'''') =          CASE WHEN ''' + CONVERT(VARCHAR,@VULN_CATGY_CD) +''' = ''''    THEN       ISNULL(A.VULN_CATGY_CD,'''') ELSE ''' + CONVERT(VARCHAR,@VULN_CATGY_CD) +'''  END   
+
+                     GROUP BY A.CLNT_ENGMT_CD'
+                           
+                                  -- print @Query
+                                    EXECUTE (@Query)
+
+                                  SET   @Query2 = 'SELECT              COUNT(A.CLNT_VULN_INSTC_KEY) OpenCount
+                     FROM            '+ @schema+'.CLNT_VULN_INSTC   A             
+                     WHERE           A.ROW_STS_KEY              =   1
+                     AND           A.CLNT_ENGMT_CD                   =   ''' + CONVERT(VARCHAR,@CLNT_ENGMT_CD) +'''
+                     AND           CLNT_VULN_INSTC_KEY =                   CASE WHEN ''' + CONVERT(VARCHAR,@CLNT_VULN_INSTC_KEY) +'''= 0  THEN       CLNT_VULN_INSTC_KEY ELSE  ''' + CONVERT(VARCHAR,@CLNT_VULN_INSTC_KEY) +'''  END
+                     AND           ISNULL(A.VULN_NM,'''') LIKE             CASE WHEN ''' + CONVERT(VARCHAR,@VULN_NM) +'''= ''''               THEN       ISNULL(A.VULN_NM,'''') ELSE ''' + '%' + CONVERT(VARCHAR,@VULN_NM) +'%' +''' END      
+                     AND           ISNULL(A.SECUR_SRVC_CD,'''') =          CASE WHEN ''' + CONVERT(VARCHAR,@SECUR_SRVC_CD) +''' = ''''    THEN       ISNULL(A.SECUR_SRVC_CD,'''') ELSE ''' + CONVERT(VARCHAR,@SECUR_SRVC_CD) +'''  END   
+                     AND           ISNULL(A.VULN_SRC_KEY,0)   =            CASE WHEN ''' + CONVERT(VARCHAR,@VULN_SRC) +'''= 0                 THEN       ISNULL(A.VULN_SRC_KEY,0) ELSE ''' + CONVERT(VARCHAR,@VULN_SRC) +''' END     
+                     AND           ISNULL(A.IPADR,'''') LIKE               CASE WHEN ''' + CONVERT(VARCHAR,@IPADR) +''' = ''''                THEN       ISNULL(A.IPADR,'''') ELSE ''' + '%' + CONVERT(VARCHAR,@IPADR) +'%' +''' END
+                     AND           ISNULL(A.VULN_SEV_CD,'''') =            CASE WHEN ''' + CONVERT(VARCHAR,@VULN_SEV_CD) +''' = ''''          THEN       ISNULL(A.VULN_SEV_CD,'''') ELSE ''' + CONVERT(VARCHAR,@VULN_SEV_CD) +'''  END
+                     AND           ISNULL(A.VULN_INSTC_STS_CD,'''') = CASE WHEN ''' + CONVERT(VARCHAR,@STSKEY) +'''= ''''                THEN       ISNULL(A.VULN_INSTC_STS_CD,'''') ELSE ''' + CONVERT(VARCHAR,@STSKEY) +'''  END
+                     AND           ISNULL(A.SFTW_NM,'''') LIKE             CASE WHEN ''' + CONVERT(VARCHAR,@SFTW_NM) +'''= ''''               THEN       ISNULL(A.SFTW_NM,'''') ELSE ''' + '%' + CONVERT(VARCHAR,@SFTW_NM) +'%' +''' END
+                     AND           A.VULN_INSTC_STS_CD =''O''
+                     GROUP BY A.CLNT_ENGMT_CD'
+                           
+                                  -- print @Query
+                                    EXECUTE (@Query2)
+
+                     SET   @Query1 = 'SELECT             CLNT_VULN_INSTC_KEY,A.VULN_NM,A.VULN_SRC_KEY,B.LKP_ENTY_NM VULN_SRC,A.VULN_SEV_CD,G.VULN_SEV_NM,A.IPADR,
+                                   C.VULN_INSTC_STS_CD,C.VULN_INSTC_STS_NM,D.SECUR_SRVC_NM,A.SECUR_SRVC_CD,F.LKP_ENTY_NM [Service Status],
+                                   A.CREAT_DT,A.UPDT_DT,A.SFTW_NM
+                     FROM          '+ @schema+'.CLNT_VULN_INSTC             A
+                     JOIN          MSTR_LKP                                 B
+                     ON            A.VULN_SRC_KEY                    =      B.MSTR_LKP_KEY
+                     JOIN          VULN_INSTC_STS                           C
+                     ON            C.VULN_INSTC_STS_CD        =   A.VULN_INSTC_STS_CD
+                     JOIN          SECUR_SRVC                               D
+                     ON            D.SECUR_SRVC_CD                   =   A.SECUR_SRVC_CD
+                     JOIN          CLNT_SECUR_SRVC_ENGMT             E
+                     ON            E.SECUR_SRVC_CD                   =      A.SECUR_SRVC_CD      
+                     JOIN          MSTR_LKP                                 F
+                     ON            E.SRVC_ENGMT_STS_KEY =   F.MSTR_LKP_KEY
+                     AND           A.CLNT_ENGMT_CD                   =   E.CLNT_ENGMT_CD
+                     LEFT JOIN     VULN_SEV                          G
+                     ON            G.VULN_SEV_CD              =   A.VULN_SEV_CD          
+                     WHERE         A.ROW_STS_KEY              =   1
+                     AND           A.CLNT_ENGMT_CD                   =   ''' + CONVERT(VARCHAR,@CLNT_ENGMT_CD) +'''
+                     AND           CLNT_VULN_INSTC_KEY =                   CASE WHEN ''' + CONVERT(VARCHAR,@CLNT_VULN_INSTC_KEY) +'''= 0  THEN       CLNT_VULN_INSTC_KEY ELSE  ''' + CONVERT(VARCHAR,@CLNT_VULN_INSTC_KEY) +'''  END
+                     AND           ISNULL(A.VULN_NM,'''') LIKE             CASE WHEN ''' + CONVERT(VARCHAR,@VULN_NM) +'''= ''''               THEN       ISNULL(A.VULN_NM,'''') ELSE ''' + '%' + CONVERT(VARCHAR,@VULN_NM) +'%' +''' END      
+                     AND           ISNULL(A.SECUR_SRVC_CD,'''') =          CASE WHEN ''' + CONVERT(VARCHAR,@SECUR_SRVC_CD) +''' = ''''    THEN       ISNULL(A.SECUR_SRVC_CD,'''') ELSE ''' + CONVERT(VARCHAR,@SECUR_SRVC_CD) +'''  END   
+                     AND           ISNULL(A.VULN_SRC_KEY,0)   =            CASE WHEN ''' + CONVERT(VARCHAR,@VULN_SRC) +'''= 0                 THEN       ISNULL(A.VULN_SRC_KEY,0) ELSE ''' + CONVERT(VARCHAR,@VULN_SRC) +''' END     
+                     AND           ISNULL(A.IPADR,'''') LIKE               CASE WHEN ''' + CONVERT(VARCHAR,@IPADR) +''' = ''''                THEN       ISNULL(A.IPADR,'''') ELSE ''' + '%' + CONVERT(VARCHAR,@IPADR) +'%' +''' END
+                     AND           ISNULL(A.VULN_SEV_CD,'''') =            CASE WHEN ''' + CONVERT(VARCHAR,@VULN_SEV_CD) +''' = ''''          THEN       ISNULL(A.VULN_SEV_CD,'''') ELSE ''' + CONVERT(VARCHAR,@VULN_SEV_CD) +'''  END
+                     AND           ISNULL(A.VULN_INSTC_STS_CD,'''') = CASE WHEN ''' + CONVERT(VARCHAR,@STSKEY) +'''= ''''                THEN       ISNULL(A.VULN_INSTC_STS_CD,'''') ELSE ''' + CONVERT(VARCHAR,@STSKEY) +'''  END
+                     AND           ISNULL(A.SFTW_NM,'''') LIKE             CASE WHEN ''' + CONVERT(VARCHAR,@SFTW_NM) +'''= ''''               THEN       ISNULL(A.SFTW_NM,'''') ELSE ''' + '%' + CONVERT(VARCHAR,@SFTW_NM) +'%' +''' END
+                     AND           ISNULL(A.VULN_CATGY_CD,'''') =          CASE WHEN ''' + CONVERT(VARCHAR,@VULN_CATGY_CD) +''' = ''''    THEN       ISNULL(A.VULN_CATGY_CD,'''') ELSE ''' + CONVERT(VARCHAR,@VULN_CATGY_CD) +'''  END   
+                     ORDER BY	   CLNT_VULN_INSTC_KEY ASC
+                     OFFSET ((' +CONVERT(VARCHAR,@PageNo) +' - 1) * ' + CONVERT(VARCHAR,@RowspPage)+') ROWS
+                     FETCH NEXT '+CONVERT(VARCHAR,@RowspPage)+' ROWS ONLY;'
+               EXECUTE (@Query1)       
+              
+END TRY
+
+BEGIN CATCH
+
+    DECLARE @ErrorNumber INT = ERROR_NUMBER();
+    DECLARE @ErrorLine INT = ERROR_LINE();
+    DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+    DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+    DECLARE @ErrorState INT = ERROR_STATE();
+
+    PRINT 'Actual error number: ' + CAST(@ErrorNumber AS VARCHAR(10));
+    PRINT 'Actual line number: ' + CAST(@ErrorLine AS VARCHAR(10));
+
+    RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
+  END CATCH
+COMMIT TRANSACTION
+END
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[RoadMap_ListTimeline]    Script Date: 2/6/2017 3:33:43 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[RoadMap_ListTimeline]
+AS
+BEGIN
+
+
+BEGIN TRY
+SET NOCOUNT ON
+
+
+			SELECT  ROADMAP_TMLN_CD,ROADMAP_TMLN_NM
+			FROM	ROADMAP_TMLN
+
+END TRY
+
+BEGIN CATCH
+
+    DECLARE @ErrorNumber INT = ERROR_NUMBER();
+    DECLARE @ErrorLine INT = ERROR_LINE();
+    DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+    DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+    DECLARE @ErrorState INT = ERROR_STATE();
+
+    PRINT 'Actual error number: ' + CAST(@ErrorNumber AS VARCHAR(10));
+    PRINT 'Actual line number: ' + CAST(@ErrorLine AS VARCHAR(10));
+
+    RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
+  END CATCH
+-- COMMIT TRANSACTION
+END
+
+GO
+/****** Object:  StoredProcedure [dbo].[Report_FindingByCategory]    Script Date: 2/13/2017 2:17:47 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE  [dbo].[Report_FindingByCategory]
+(
+	
+	@CLNT_ENGMT_CD		 VARCHAR(100),
+	@VULN_CATGY_CD		 VARCHAR(1000),
+	@SchemaName			 VARCHAR(50)
+)
+AS
+BEGIN
+
+BEGIN TRY
+SET NOCOUNT ON
+DECLARE @Query VARCHAR(MAX)
+
+SET @Query='
+SELECT      DISTINCT A.*
+FROM	   '+ @SchemaName+ '.Findings								  A
+WHERE	    A.VULN_INSTC_STS_CD		NOT IN(''D'',''FP'')
+AND		    A.VULN_INSTC_STS_CD		=	''V''
+AND		    A.VULN_SEV_CD			NOT IN(''I'')
+AND			A.ROW_STS_KEY			=	1
+AND			A.CLNT_ENGMT_CD			= '''+@CLNT_ENGMT_CD + '''
+AND			A.VULN_CATGY_CD			= CASE WHEN '''+@VULN_CATGY_CD + ''' = '''' THEN A.VULN_CATGY_CD ELSE '''+@VULN_CATGY_CD + ''' END'
+EXECUTE(@Query)
+
+
+END TRY
+
+BEGIN CATCH
+
+    DECLARE @ErrorNumber   INT = ERROR_NUMBER();
+    DECLARE @ErrorLine	   INT = ERROR_LINE();
+    DECLARE @ErrorMessage  NVARCHAR(4000) = ERROR_MESSAGE();
+    DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+    DECLARE @ErrorState	   INT = ERROR_STATE();
+
+    PRINT 'Actual error number: ' + CAST(@ErrorNumber AS VARCHAR(10));
+    PRINT 'Actual line number: ' + CAST(@ErrorLine AS VARCHAR(10));
+
+    RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
+  END CATCH
+-- COMMIT TRANSACTION
+END
